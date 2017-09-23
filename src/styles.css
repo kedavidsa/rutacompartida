@@ -2,7 +2,6 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 body {
   margin: 0px;
-  background: #424242;
   display: flex;
   justify-content: center;
   align-items: center;

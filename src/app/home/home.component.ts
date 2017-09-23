@@ -79,9 +79,11 @@ export class HomePageComponent {
     }
   ];
   username: string;
+  userpic: string;
   constructor(private router: Router, private authService: LoginService){
     this.authService.user.subscribe(user=>{
       this.username = user.displayName;
+      this.userpic = user.photoURL;
     })
   }
   getReverseGeocoding(address) {

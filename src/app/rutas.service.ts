@@ -12,7 +12,7 @@ export class RutasService {
   item: FirebaseObjectObservable<any>;
   constructor(db: AngularFireDatabase, private authService: LoginService) {
     this.authService.user.subscribe(user => {
-      this.item = db.object("/" + user.uid);
+      this.item = db.object("/usuarios/" + user.uid +"/rutas");
     });
   }
   guardarRuta(ruta: Ruta) {

@@ -26,4 +26,14 @@ body{
     right: 1em;
     position: absolute;
 }
+.avatar {
+    border-radius: 50%;
+    border-color: transparent;
+    height: 40px;
+    overflow: hidden;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
