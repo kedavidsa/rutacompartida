@@ -9,7 +9,7 @@ import { FormControl, Validators } from "@angular/forms";
 import { MapsAPILoader } from "@agm/core";
 import {} from "googlemaps";
 import { Router } from "@angular/router";
-import { Ruta, RutasService } from "../rutas.service";
+import { Ruta, RutasService, ACTIVO } from "../rutas.service";
 import { Http } from "@angular/http";
 import { ViewContainerRef } from "@angular/core";
 import _ from "lodash";
@@ -102,6 +102,7 @@ export class NewrutaComponent implements OnInit {
   ruta: Ruta = {
     key: "",
     nombre: "",
+    estado: ACTIVO,
     init: {
       direccion: "",
       lat: "",

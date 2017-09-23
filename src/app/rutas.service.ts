@@ -4,9 +4,9 @@ import {
   FirebaseObjectObservable
 } from "angularfire2/database";
 import { LoginService } from "./login.service";
-const ACTIVO = 1;
-const BUSCAR = 2;
-const EMPEZAR = 3;
+export const ACTIVO = 1;
+export const BUSCAR = 2;
+export const EMPEZAR = 3;
 @Injectable()
 export class RutasService {
   item: FirebaseObjectObservable<any>;
@@ -19,10 +19,17 @@ export class RutasService {
     ruta.key =  this.item.$ref.push().key;
     return this.item.$ref.child(ruta.key).set(ruta)
   }
+  editarRuta(ruta:Ruta){
+    return this.item.$ref.child(ruta.key).set(ruta)
+  }
+  removeRuta(ruta:Ruta){
+    return this.item.$ref.child(ruta.key).set(ruta)
+  }
 }
 export interface Ruta {
   key: string;
   nombre: string;
+  estado:string;
   init: Direccion;
   end: Direccion;
   days: {
