@@ -9,23 +9,24 @@
                                 
         </md-chip-list>
         
-        <div class="chat-body">
+        <div class="chat-body" #scrollMe>
                         <div *ngFor="let message of messages"> 
                                         
-                                        <div id="1501790790822" class="bubblewrap pull-left" *ngIf="!message.propio">
+                                        <div  class="bubblewrap pull-left" *ngIf="!(message.uid==uid)">
                                         <span  class="bubble pull-left message-u">
                                                 <div class="ng-binding">{{message.message}}</div>
                                                 <div class="ng-binding pull-left date-u">
-                                                        3/08/2017 15:06
+                                                        <p style="font-size:10px;margin:0px;"> {{message.username}}</p>
+                                                        <p>3/08/2017 15:06</p>
                                                 </div>
                                         </span>
                                         </div>  
                                         
-                                        <div id="1506175161769" class="bubblewrap pull-right" *ngIf="message.propio">
+                                        <div  class="bubblewrap pull-right" *ngIf="(message.uid==uid)">
                                         <span  class="bubble pull-right message-p">
                                                 <div class="ng-binding">{{message.message}}</div>
                                                 <div class="ng-binding pull-right date-p">
-                                                        8:59
+                                                        <p style="font-size:10px;margin:0px;">3/08/2017 15:06</p>
                                                 </div>
                                         </span>
                                         </div>
@@ -43,10 +44,10 @@
                         <input mdInput placeholder="Send a message" (keyup.enter)="sendMessage()" [(ngModel)]="sendMessageValue">
                         
                 </md-form-field>
-                <button md-raised-button color="primary"><md-icon>send</md-icon></button>
+                <button md-raised-button color="primary" (click)="sendMessage()"><md-icon>send</md-icon></button>
         </div>
 
-        <md-toolbar>Punto de encuentro</md-toolbar>
+        <md-toolbar>Punto de encuentro recomendado</md-toolbar>
         <agm-map [latitude]="lat" [longitude]="lng">
                         <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
                         <agm-marker [latitude]="lat2" [longitude]="lng2"></agm-marker>
