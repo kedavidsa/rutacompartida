@@ -1,9 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  NgZone,
+  ElementRef
+} from "@angular/core";
 import { FormControl, Validators } from "@angular/forms";
+import { MapsAPILoader } from "@agm/core";
+import {} from "googlemaps";
+import { Router } from "@angular/router";
+import { Ruta, RutasService } from "../rutas.service";
 @Component({
-  selector: 'app-newruta',
-  templateUrl: './newruta.component.html',
-  styleUrls: ['./newruta.component.css']
+  selector: "app-newruta",
+  templateUrl: "./newruta.component.html",
+  styleUrls: ["./newruta.component.css"]
 })
 export class NewrutaComponent implements OnInit {
   rutaFormControl = new FormControl("", [Validators.required]);
@@ -60,15 +70,56 @@ export class NewrutaComponent implements OnInit {
     {
       label: "directions_walk",
       active: true
-    },
-
+    }
   ];
-  
-  constructor() { 
+  horas = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+  minutos = [];
+  franjas = ["AM", "PM"];
+  ruta: Ruta = {
+    key: "",
+    init: {
+      direccion: "",
+      lat: "",
+      long: ""
+    },
+    end: {
+      direccion: "",
+      lat: "",
+      long: ""
+    },
+    days: {
+      L: false,
+      M: false,
+      I: false,
+      J: false,
+      V: false,
+      S: false,
+      D: false
+    },
+    types: {
+      taxi: false,
+      bus: false,
+      bike: false,
+      car: false,
+      walk: false
+    }
+  };
+  @ViewChild("search") public searchElementRef: ElementRef;
+  constructor(
+    private mapsAPILoader: MapsAPILoader,
+    private ngZone: NgZone,
+    private router: Router,
+    private rutaServ: RutasService
+  ) {}
 
+  ngOnInit() {}
+  save() {
+    console.log("save");
+    this.rutaServ.guardarRuta(this.ruta).then(()=>{
+      this.router.navigate(["/home"]);
+    });
   }
-
-  ngOnInit() {
+  back() {
+    this.router.navigate(["/home"]);
   }
-
 }

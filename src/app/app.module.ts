@@ -48,6 +48,8 @@ import {
 } from "@angular/material";
 import { NewrutaComponent } from './newruta/newruta.component';
 import { LoginService } from "./login.service";
+import { RutasService } from "./rutas.service";
+import { AngularFireDatabase } from "angularfire2/database";
 export const config = {
   apiKey: "AIzaSyC_CwlZTdycKDkbbmbF7ztxqmehYVj3kP8",
   authDomain: "afiny4pt.firebaseapp.com",
@@ -134,7 +136,7 @@ export const config = {
     MdToolbarModule,
     MdTooltipModule
   ],
-  providers: [LoginService, AngularFireAuth ],
+  providers: [LoginService, AngularFireAuth, AngularFireDatabase, RutasService ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
