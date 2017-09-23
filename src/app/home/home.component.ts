@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { Router } from "@angular/router";
+import { LoginService } from "../login.service";
 
 @Component({
   selector: "home-page",
@@ -77,8 +78,11 @@ export class HomePageComponent {
       endLon: ""
     }
   ];
-  constructor(private router: Router){
-    
+  username: string;
+  constructor(private router: Router, private authService: LoginService){
+    this.authService.user.subscribe(user=>{
+      this.username = user.displayName;
+    })
   }
   getReverseGeocoding(address) {
     console.log("test");

@@ -2,6 +2,7 @@
   <span>Tus rutas</span>
 </md-toolbar>
 <div>
+  <h1 style="margin: 20px">Bienvenido {{username}}</h1>
   <md-accordion multi="false">
     <md-expansion-panel *ngFor="let route of routes">
       <md-expansion-panel-header>
@@ -20,10 +21,12 @@
           <li *ngFor="let day of days" [ngClass]="{'active': day.active}" (click)="day.active = !day.active">{{day.label}}</li>
         </ul>
       </div>
-      <div>
-        <span>07: 30 PM</span>
+      <div style="flex-direction: column">
+        <span><md-icon color="accent">alarm </md-icon> 07: 30 PM</span>
         <small class="flex"></small>
+        <div style="flex-direction: row">
         <md-icon class="type-icon">directions_walk</md-icon>
+      </div>
       </div>
       <!--md-select class="full-w" placeholder="Tipo de ruta">
                                 <md-option *ngFor="let trip of trips" [value]="trip">
