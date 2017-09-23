@@ -1,0 +1,60 @@
+<md-toolbar color="primary">
+        <span>Ruta iniciada</span>
+</md-toolbar>
+      
+<div>
+        
+        <md-chip-list>
+                <md-chip *ngFor="let person of people"><md-icon>person_pin</md-icon>{{person.name}}</md-chip>
+                                
+        </md-chip-list>
+        
+        <div class="chat-body">
+                        <div *ngFor="let message of messages"> 
+                                        
+                                        <div id="1501790790822" class="bubblewrap pull-left" *ngIf="!message.propio">
+                                        <span  class="bubble pull-left message-u">
+                                                <div class="ng-binding">{{message.message}}</div>
+                                                <div class="ng-binding pull-left date-u">
+                                                        3/08/2017 15:06
+                                                </div>
+                                        </span>
+                                        </div>  
+                                        
+                                        <div id="1506175161769" class="bubblewrap pull-right" *ngIf="message.propio">
+                                        <span  class="bubble pull-right message-p">
+                                                <div class="ng-binding">{{message.message}}</div>
+                                                <div class="ng-binding pull-right date-p">
+                                                        8:59
+                                                </div>
+                                        </span>
+                                        </div>
+                                
+                        </div>
+
+        </div>
+        
+
+        
+
+
+        <div class="senddiv">
+                <md-form-field class="full-width-send">
+                        <input mdInput placeholder="Send a message" (keyup.enter)="sendMessage()" [(ngModel)]="sendMessageValue">
+                        
+                </md-form-field>
+                <button md-raised-button color="primary"><md-icon>send</md-icon></button>
+        </div>
+
+
+        <agm-map [latitude]="lat" [longitude]="lng">
+                        <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+                        <agm-marker [latitude]="lat2" [longitude]="lng2"></agm-marker>
+        </agm-map>
+        
+        
+
+
+</div>
+      
+      

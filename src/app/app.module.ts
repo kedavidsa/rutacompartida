@@ -11,6 +11,7 @@ import { AngularFontAwesomeModule } from "angular-font-awesome/angular-font-awes
 //Pages
 import { LoginPageComponent } from "./login/login.component";
 import { HomePageComponent } from "./home/home.component";
+import { StartPageComponent } from "./startruta/start-ruta.component";
 
 import {
   MdAutocompleteModule,
@@ -48,7 +49,7 @@ import {
 import { NewrutaComponent } from './newruta/newruta.component';
 
 @NgModule({
-  declarations: [AppComponent, HomePageComponent, LoginPageComponent, NewrutaComponent],
+  declarations: [AppComponent, HomePageComponent, LoginPageComponent, NewrutaComponent,StartPageComponent],
   imports: [
     BrowserModule,
     FormsModule,
