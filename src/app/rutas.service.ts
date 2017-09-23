@@ -1,15 +1,18 @@
 import { Injectable } from "@angular/core";
 import {
   AngularFireDatabase,
-  FirebaseObjectObservable
+  FirebaseObjectObservable,
+  FirebaseListObservable
 } from "angularfire2/database";
 import { LoginService } from "./login.service";
 @Injectable()
 export class RutasService {
   item: FirebaseObjectObservable<any>;
+  routes: FirebaseListObservable<any>;
   constructor(db: AngularFireDatabase, private authService: LoginService) {
     this.authService.user.subscribe(user => {
       this.item = db.object("/" + user.uid);
+      this.routes = db.list("/" + user.uid);
     });
   }
   guardarRuta(ruta: Ruta) {
