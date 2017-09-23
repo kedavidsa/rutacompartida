@@ -13,6 +13,9 @@ import { LoginPageComponent } from "./login/login.component";
 import { HomePageComponent } from "./home/home.component";
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { HttpModule } from '@angular/http';
+import { ToastModule } from 'ng2-toastr/ng2-toastr';
+
 import {
   MdAutocompleteModule,
   MdButtonModule,
@@ -59,6 +62,8 @@ export const config = {
 @NgModule({
   declarations: [AppComponent, HomePageComponent, LoginPageComponent, NewrutaComponent],
   imports: [
+    ToastModule.forRoot(),
+    HttpModule,
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
