@@ -1,0 +1,35 @@
+<div class="main">
+  <form class="form">
+    <md-form-field>
+      <input mdInput placeholder="Nombre Ruta" [formControl]="rutaFormControl">
+      <md-error *ngIf="emailFormControl.hasError('required')">
+        Nombre es <strong>obligatorio</strong>
+      </md-error>
+    </md-form-field>
+    <md-form-field>
+      <input mdInput placeholder="Dirección de Inicio" [formControl]="diriniFormControl">
+      <md-error *ngIf="emailFormControl.hasError('required')">
+        Dirección de inicio es <strong>obligatorio</strong>
+      </md-error>
+    </md-form-field>
+    <md-form-field>
+      <input mdInput placeholder="Dirección de Destino" [formControl]="dirdestFormControl">
+      <md-error *ngIf="emailFormControl.hasError('required')">
+        Dirección de destino es <strong>obligatorio</strong>
+      </md-error>
+    </md-form-field>
+    <md-checkbox>Lunes</md-checkbox>
+    <md-checkbox>Martes</md-checkbox>
+    <md-checkbox>Miercoles</md-checkbox>
+    <md-checkbox>Jueves</md-checkbox>
+    <md-checkbox>Viernes</md-checkbox>
+    <md-checkbox>Sabado</md-checkbox>
+    <md-checkbox>Domingo</md-checkbox>
+    <md-icon>local_taxi</md-icon>
+    <md-icon>directions_car</md-icon>
+    <md-icon>directions_bus</md-icon>
+    <md-icon>direction_bike</md-icon>
+    <md-icon>directions_walk</md-icon>
+    <button md-raised-button color="primary">GUARDAR RUTA</button>
+  </form>
+</div>

@@ -1,20 +1,15 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { BrowserModule } from "@angular/platform-browser";
+import { NgModule } from "@angular/core";
 
-import { AppComponent } from './app.component';
+import { AppComponent } from "./app.component";
 
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 //Routing
-import { AppRoutingModule }     from './app-routing.module';
-
-import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
-
-
+import { AppRoutingModule } from "./app-routing.module";
+import { AngularFontAwesomeModule } from "angular-font-awesome/angular-font-awesome";
 //Pages
-import { LoginPageComponent }  from './login/login.component';
-import { HomePageComponent }  from './home/home.component';
-
+import { LoginPageComponent } from "./login/login.component";
+import { HomePageComponent } from "./home/home.component";
 
 import {
   MdAutocompleteModule,
@@ -47,17 +42,16 @@ import {
   MdTabsModule,
   MdToolbarModule,
   MdTooltipModule,
-  MdStepperModule,
-} from '@angular/material';
+  MdStepperModule
+} from "@angular/material";
+import { NewrutaComponent } from './newruta/newruta.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomePageComponent,
-    LoginPageComponent,
-  ],
+  declarations: [AppComponent, HomePageComponent, LoginPageComponent, NewrutaComponent],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     MdAutocompleteModule,
     MdButtonModule,
     MdButtonToggleModule,
@@ -123,9 +117,9 @@ import {
     MdTableModule,
     MdTabsModule,
     MdToolbarModule,
-    MdTooltipModule,
+    MdTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

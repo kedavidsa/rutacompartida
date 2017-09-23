@@ -1,13 +1,21 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<md-card>
-    <form class="login-form">
-        <md-form-field class="login-full-width">
-            <input mdInput placeholder="username">
-        </md-form-field>
-        <md-form-field class="login-full-width">
-            <input mdInput placeholder="password">
-        </md-form-field>
-    </form>
-
-
-</md-card>
+<div class="main">
+  <form class="form">
+    <md-form-field>
+      <input mdInput placeholder="Correo Electrónico" [formControl]="emailFormControl">
+      <md-error *ngIf="emailFormControl.hasError('pattern')">
+        Por favor ingrese un correo valido.
+      </md-error>
+      <md-error *ngIf="emailFormControl.hasError('required')">
+        Correo es <strong>obligatorio</strong>
+      </md-error>
+    </md-form-field>
+    <md-form-field>
+      <input mdInput placeholder="Contraseña" type="password" [formControl]="passwordFormControl">
+      <md-error *ngIf="emailFormControl.hasError('required')">
+        Contraseña es <strong>obligatorio</strong>
+      </md-error>
+    </md-form-field>
+    <button md-raised-button color="warn" (click)="login()" style="margin:20px 0">INICIAR SESIÓN</button>
+    <button md-raised-button color="primary">INGRESAR CON FACEBOOK</button>
+  </form>
+</div>
