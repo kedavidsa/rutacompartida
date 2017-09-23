@@ -8,6 +8,7 @@ import { LoginService } from "./login.service";
 export const ACTIVO = 1;
 export const BUSCAR = 2;
 export const EMPEZAR = 3;
+export const TERMINAR = 4;
 @Injectable()
 export class RutasService {
   item: FirebaseObjectObservable<any>;
