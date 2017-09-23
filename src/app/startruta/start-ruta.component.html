@@ -1,0 +1,61 @@
+<md-toolbar color="primary">
+        <span>Ruta iniciada</span>
+</md-toolbar>
+      
+<div>
+        
+        <md-chip-list>
+                <md-chip *ngFor="let person of people"><md-icon>person_pin</md-icon>{{person.name}}</md-chip>
+                                
+        </md-chip-list>
+        
+        <div class="chat-body" #scrollMe>
+                        <div *ngFor="let message of messages"> 
+                                        
+                                        <div  class="bubblewrap pull-left" *ngIf="!(message.uid==uid)">
+                                        <span  class="bubble pull-left message-u">
+                                                <div class="ng-binding">{{message.message}}</div>
+                                                <div class="ng-binding pull-left date-u">
+                                                        <p style="font-size:10px;margin:0px;"> {{message.username}}</p>
+                                                        <p>3/08/2017 15:06</p>
+                                                </div>
+                                        </span>
+                                        </div>  
+                                        
+                                        <div  class="bubblewrap pull-right" *ngIf="(message.uid==uid)">
+                                        <span  class="bubble pull-right message-p">
+                                                <div class="ng-binding">{{message.message}}</div>
+                                                <div class="ng-binding pull-right date-p">
+                                                        <p style="font-size:10px;margin:0px;">3/08/2017 15:06</p>
+                                                </div>
+                                        </span>
+                                        </div>
+                                
+                        </div>
+
+        </div>
+        
+
+        
+
+
+        <div class="senddiv">
+                <md-form-field class="full-width-send">
+                        <input mdInput placeholder="Send a message" (keyup.enter)="sendMessage()" [(ngModel)]="sendMessageValue">
+                        
+                </md-form-field>
+                <button md-raised-button color="primary" (click)="sendMessage()"><md-icon>send</md-icon></button>
+        </div>
+
+        <md-toolbar>Punto de encuentro recomendado</md-toolbar>
+        <agm-map [latitude]="lat" [longitude]="lng">
+                        <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+                        <agm-marker [latitude]="lat2" [longitude]="lng2"></agm-marker>
+        </agm-map>
+        
+        
+
+
+</div>
+      
+      
