@@ -16,20 +16,20 @@ export class RutasService {
     });
   }
   guardarRuta(ruta: Ruta) {
-    ruta.key =  this.item.$ref.push().key;
-    return this.item.$ref.child(ruta.key).set(ruta)
+    ruta.key = this.item.$ref.push().key;
+    return this.item.$ref.child(ruta.key).set(ruta);
   }
-  editarRuta(ruta:Ruta){
-    return this.item.$ref.child(ruta.key).set(ruta)
+  editarRuta(ruta: Ruta) {
+    return this.item.$ref.child(ruta.key).set(ruta);
   }
-  removeRuta(ruta:Ruta){
-    return this.item.$ref.child(ruta.key).set(ruta)
+  removeRuta(ruta: Ruta) {
+    return this.item.$ref.child(ruta.key).remove();
   }
 }
 export interface Ruta {
   key: string;
   nombre: string;
-  estado:string;
+  estado: string;
   init: Direccion;
   end: Direccion;
   days: {
