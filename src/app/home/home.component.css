@@ -3,6 +3,8 @@ agm-map {
     width: 100%;
 }
 
+
+
 .corner-buttons{
     position: absolute;
     bottom: 1em;
@@ -24,3 +26,4 @@ body{
     right: 1em;
     position: absolute;
 }
+

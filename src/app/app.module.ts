@@ -11,8 +11,15 @@ import { AngularFontAwesomeModule } from "angular-font-awesome/angular-font-awes
 //Pages
 import { LoginPageComponent } from "./login/login.component";
 import { HomePageComponent } from "./home/home.component";
+
+import { StartPageComponent } from "./startruta/start-ruta.component";
+
+
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { HttpModule } from '@angular/http';
+import { ToastModule } from 'ng2-toastr/ng2-toastr';
+
 import {
   MdAutocompleteModule,
   MdButtonModule,
@@ -59,8 +66,10 @@ export const config = {
   messagingSenderId: "378278091539"
 };
 @NgModule({
-  declarations: [AppComponent, HomePageComponent, LoginPageComponent, NewrutaComponent],
+  declarations: [AppComponent, HomePageComponent, LoginPageComponent, NewrutaComponent,StartPageComponent],
   imports: [
+    ToastModule.forRoot(),
+    HttpModule,
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,

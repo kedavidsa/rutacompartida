@@ -2,46 +2,31 @@
   <span>Tus rutas</span>
 </md-toolbar>
 <div class="main">
+    <md-toolbar color="primary">
+      <span>Nueva ruta</span>
+    </md-toolbar>
+    <md-progress-bar *ngIf="savingRoute" mode="indeterminate"></md-progress-bar>
 
-  <form class="form">
+  <form class="form" #createAddressForm="ngForm">
     <md-card>
       <md-form-field style="width:100%">
-        <input mdInput placeholder="Nombre Ruta" [formControl]="rutaFormControl">
+        <input [(ngModel)]="ruta.nombre" mdInput placeholder="Nombre Ruta" [formControl]="rutaFormControl" name="name" [(ngModel)]="name">
         <md-error *ngIf="rutaFormControl.hasError('required')">
           Nombre es <strong>obligatorio</strong>
         </md-error>
       </md-form-field>
       <md-form-field style="width:100%">
-        <input mdInput placeholder="Dirección de Inicio" [formControl]="diriniFormControl">
+        <input [(ngModel)]="ruta.init.direccion" mdInput placeholder="Dirección de Inicio" [formControl]="diriniFormControl" name="start" [(ngModel)]="start">
         <md-error *ngIf="diriniFormControl.hasError('required')">
           Dirección de inicio es <strong>obligatorio</strong>
         </md-error>
       </md-form-field>
       <md-form-field style="width:100%">
-          <input mdInput placeholder="Dirección de Destino" [formControl]="dirdestFormControl">
-          <md-error *ngIf="dirdestFormControl.hasError('required')">
-            Dirección de destino es <strong>obligatorio</strong>
-          </md-error>
-        </md-form-field>
-    </md-card>
-    <md-card>
-      <div style="display:flex; flex-direction:row; justify-content:space-between; overflow:hidden">
-        <md-select  placeholder="Hora">
-          <md-option *ngFor="let h of horas" [value]="h">
-            {{ h }}
-          </md-option>
-        </md-select>
-        <md-select  placeholder="Minuto">
-          <md-option *ngFor="let m of minutos" [value]="m">
-            {{ m }}
-          </md-option>
-        </md-select>
-        <md-select  placeholder="Franja">
-          <md-option *ngFor="let f of franjas" [value]="f">
-            {{ f }}
-          </md-option>
-        </md-select>
-      </div>
+        <input [(ngModel)]="ruta.end.direccion" mdInput placeholder="Dirección de Destino" [formControl]="dirdestFormControl" name="end" [(ngModel)]="end">
+        <md-error *ngIf="dirdestFormControl.hasError('required')">
+          Dirección de destino es <strong>obligatorio</strong>
+        </md-error>
+      </md-form-field>
     </md-card>
     <md-card>
       <div class="week">
@@ -65,6 +50,7 @@
       <button md-raised-button color="accent" (click)="back()">ATRÁS</button>
 
     </md-card>
+    <md-progress-bar *ngIf="savingRoute" mode="indeterminate"></md-progress-bar>
 
   </form>
 </div>
