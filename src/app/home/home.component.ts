@@ -80,19 +80,15 @@ export class HomePageComponent {
     }
   ];
   username: string;
+  userpic: string;
   constructor(
     private router: Router, 
     private authService: LoginService, 
-    private rutaServ: RutasService,
+    public rutaServ: RutasService,
   ){
-    console.log(this.rutaServ);
-    console.log(this.rutaServ.routes.subscribe(routes=>{
-      routes.forEach(route => {
-        console.log(route);
-    });
-    }));
     this.authService.user.subscribe(user=>{
       this.username = user.displayName;
+      this.userpic = user.photoURL;
     })
   }
   getReverseGeocoding(address) {

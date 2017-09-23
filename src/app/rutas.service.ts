@@ -14,8 +14,8 @@ export class RutasService {
   routes: FirebaseListObservable<any>;
   constructor(db: AngularFireDatabase, private authService: LoginService) {
     this.authService.user.subscribe(user => {
-      this.item = db.object("/" + user.uid);
-      this.routes = db.list("/" + user.uid);
+      this.item = db.object("/usuarios/" + user.uid +"/rutas");
+      this.routes = db.list("/usuarios/" + user.uid + "/rutas" );
     });
   }
   guardarRuta(ruta: Ruta) {
@@ -32,7 +32,7 @@ export class RutasService {
 export interface Ruta {
   key: string;
   nombre: string;
-  estado: string;
+  estado: number;
   init: Direccion;
   end: Direccion;
   days: {

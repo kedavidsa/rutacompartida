@@ -11,6 +11,7 @@ const functions = require('firebase-functions');
 const admin = require("firebase-admin");
 admin.initializeApp(functions.config().firebase);
 
+
 exports.crearViaje = functions.database
 .ref("/usuarios/{pushId}/rutas")
 .onWrite(event => {
@@ -129,3 +130,10 @@ function distance(lat1,lon1,lat2,lon2) {
 	else if (d<=1) return Math.round(d*1000);
 	return d;
 }
+
+
+exports.newuser = functions.auth.user().onCreate(event => {
+  const user = event.data; // The Firebase user.
+  const Url = user.photoURL;
+  let ref = admin.database().ref("/usuarios").child(user.uid).set({photo: Url});
+});

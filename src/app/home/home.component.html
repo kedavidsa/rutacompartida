@@ -2,9 +2,10 @@
   <span>Tus rutas</span>
 </md-toolbar>
 <div>
-  <h1 style="margin: 20px">Bienvenido {{username}}</h1>
+  <div style="display:flex;flex-direction:column; align-items:center; justify-content:space-between; margin:20px 0px"><img class="avatar" [src]="userpic" width="60" height="60" style="border-radius=50%">
+  <h3 style="margin: 20px">Bienvenido {{username}}</h3></div>
   <md-accordion multi="false">
-    <md-expansion-panel *ngFor="let route of routes">
+    <md-expansion-panel *ngFor="let route of rutaServ.routes | async">
       <md-expansion-panel-header>
         <md-panel-title>
           {{ route.name }}
@@ -25,8 +26,8 @@
         <span><md-icon color="accent">alarm </md-icon> 07: 30 PM</span>
         <small class="flex"></small>
         <div style="flex-direction: row">
-        <md-icon class="type-icon">directions_walk</md-icon>
-      </div>
+          <md-icon class="type-icon">directions_walk</md-icon>
+        </div>
       </div>
       <!--md-select class="full-w" placeholder="Tipo de ruta">
                                 <md-option *ngFor="let trip of trips" [value]="trip">
