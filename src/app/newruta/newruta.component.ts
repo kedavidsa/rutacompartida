@@ -143,9 +143,9 @@ export class NewrutaComponent implements OnInit {
   }
 
   ngOnInit() {}
-  save() {
-    this.saveAddress();
+  saveAddressOnFirebase() {
     
+
     this.ruta.init.lat = this.startCoordinates.lat;
     this.ruta.init.long = this.startCoordinates.lng;
     this.ruta.end.lat = this.endCoordinates.lat;
@@ -156,7 +156,6 @@ export class NewrutaComponent implements OnInit {
     this.types.forEach(a => {
       this.ruta.types[a.key] = a.active;
     });
-    console.log("save");
     this.rutaServ.guardarRuta(this.ruta).then(() => {
       this.router.navigate(["/home"]);
     });
@@ -166,7 +165,7 @@ export class NewrutaComponent implements OnInit {
     this.router.navigate(["/home"]);
   }
 
-  saveAddress() {
+  save() {
     const self = this;
     self.savingRoute = true;
     // Get start and end coordinates
@@ -200,5 +199,5 @@ export class NewrutaComponent implements OnInit {
     });
   }
 
-  saveAddressOnFirebase() {}
+ 
 }
