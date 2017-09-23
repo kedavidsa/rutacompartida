@@ -1,9 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { AgmCoreModule } from '@agm/core';
 
 //Routing
 import { AppRoutingModule }     from './app-routing.module';
@@ -90,7 +92,11 @@ import {
     MdToolbarModule,
     MdTooltipModule,
     AppRoutingModule,
-    AngularFontAwesomeModule
+    AngularFontAwesomeModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCb-zSaO_XizGF7fgnsBeLX5-MeRvVMagw'
+    }),
+    BrowserAnimationsModule
   ],
   exports: [
     MdAutocompleteModule,

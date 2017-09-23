@@ -1,12 +1,42 @@
 <md-card>
 
-        <i class="fa fa-search"></i>
+        
+        <md-grid-list cols="2" rowHeight="2:1">
+                <md-grid-tile>
+                        <agm-map [latitude]="lat" [longitude]="lng">
+                                <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+                                <agm-marker [latitude]="lat2" [longitude]="lng2"></agm-marker>
+                        </agm-map>
 
-        <md-checkbox>Lunes</md-checkbox>
-        <md-checkbox>Martes</md-checkbox>
-        <md-checkbox>Miercoles</md-checkbox>
-        <md-checkbox>Jueves</md-checkbox>
-        <md-checkbox>Viernes</md-checkbox>
-        <md-checkbox>Sabado</md-checkbox>
-        <md-checkbox>Domingo</md-checkbox>
+                </md-grid-tile>
+                <md-grid-tile>
+                        <md-checkbox>Lunes</md-checkbox>
+                        <md-checkbox>Martes</md-checkbox>
+                        <md-checkbox>Miercoles</md-checkbox>
+                        <md-checkbox>Jueves</md-checkbox>
+                        <md-checkbox>Viernes</md-checkbox>
+                        <md-checkbox>Sabado</md-checkbox>
+                        <md-checkbox>Domingo</md-checkbox>
+
+                        
+                        <md-button-toggle><md-icon>directions_car</md-icon></md-button-toggle>
+                        <md-button-toggle><md-icon><md-icon>local_taxi</md-icon></md-icon></md-button-toggle>
+                        <md-button-toggle><md-icon><md-icon>directions_walk</md-icon></md-icon></md-button-toggle>
+                        
+                        
+
+                        
+                        
+
+
+                </md-grid-tile>
+                
+        </md-grid-list>
+            
+
+        
+
+
+        
+
 </md-card>
