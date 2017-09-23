@@ -1,7 +1,8 @@
 import { Injectable } from "@angular/core";
 import {
   AngularFireDatabase,
-  FirebaseObjectObservable
+  FirebaseObjectObservable,
+  FirebaseListObservable
 } from "angularfire2/database";
 import { LoginService } from "./login.service";
 export const ACTIVO = 1;
@@ -10,9 +11,11 @@ export const EMPEZAR = 3;
 @Injectable()
 export class RutasService {
   item: FirebaseObjectObservable<any>;
+  routes: FirebaseListObservable<any>;
   constructor(db: AngularFireDatabase, private authService: LoginService) {
     this.authService.user.subscribe(user => {
       this.item = db.object("/usuarios/" + user.uid +"/rutas");
+      this.routes = db.list("/usuarios/" + user.uid + "/rutas" );
     });
   }
   guardarRuta(ruta: Ruta) {

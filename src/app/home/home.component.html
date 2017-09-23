@@ -5,7 +5,7 @@
   <div style="display:flex;flex-direction:column; align-items:center; justify-content:space-between; margin:20px 0px"><img class="avatar" [src]="userpic" width="60" height="60" style="border-radius=50%">
   <h3 style="margin: 20px">Bienvenido {{username}}</h3></div>
   <md-accordion multi="false">
-    <md-expansion-panel *ngFor="let route of routes">
+    <md-expansion-panel *ngFor="let route of rutaServ.routes | async">
       <md-expansion-panel-header>
         <md-panel-title>
           {{ route.name }}

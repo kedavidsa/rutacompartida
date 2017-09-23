@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { Router } from "@angular/router";
 import { LoginService } from "../login.service";
+import { RutasService } from "../rutas.service";
 
 @Component({
   selector: "home-page",
@@ -80,7 +81,11 @@ export class HomePageComponent {
   ];
   username: string;
   userpic: string;
-  constructor(private router: Router, private authService: LoginService){
+  constructor(
+    private router: Router, 
+    private authService: LoginService, 
+    public rutaServ: RutasService,
+  ){
     this.authService.user.subscribe(user=>{
       this.username = user.displayName;
       this.userpic = user.photoURL;
