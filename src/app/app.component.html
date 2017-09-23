@@ -1,2 +1,24 @@
-<router-outlet></router-outlet>
+
+<md-sidenav-container class="example-container">
+    <md-sidenav #sidenav class="example-sidenav">
+        Side Nav
+    </md-sidenav>
+    
+    <md-toolbar class="fixed">
+        <div class="md-toolbar-tools">
+
+            <div class="example-sidenav-content">
+                <button type="button" md-button (click)="sidenav.open()">
+                        <md-icon>menu</md-icon>
+                </button>
+            </div>
+        </div>
+    </md-toolbar>
+
+
+    <router-outlet></router-outlet>
+    
+
+</md-sidenav-container>
+
 
