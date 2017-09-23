@@ -8,6 +8,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 //Routing
 import { AppRoutingModule }     from './app-routing.module';
 
+import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
 
 
 //Pages
@@ -89,6 +90,7 @@ import {
     MdToolbarModule,
     MdTooltipModule,
     AppRoutingModule,
+    AngularFontAwesomeModule
   ],
   exports: [
     MdAutocompleteModule,
