@@ -29,7 +29,7 @@ export class RutasService {
 export interface Ruta {
   key: string;
   nombre: string;
-  estado: string;
+  estado: number;
   init: Direccion;
   end: Direccion;
   days: {
