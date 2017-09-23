@@ -4,6 +4,9 @@ import {
   FirebaseObjectObservable
 } from "angularfire2/database";
 import { LoginService } from "./login.service";
+const ACTIVO = 1;
+const BUSCAR = 2;
+const EMPEZAR = 3;
 @Injectable()
 export class RutasService {
   item: FirebaseObjectObservable<any>;
