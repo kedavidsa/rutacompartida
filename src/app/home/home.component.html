@@ -8,32 +8,27 @@
     <md-expansion-panel *ngFor="let route of rutaServ.routes | async">
       <md-expansion-panel-header>
         <md-panel-title>
-          {{ route.name }}
+          {{ route.nombre }}
         </md-panel-title>
         <md-panel-description>
         </md-panel-description>
       </md-expansion-panel-header>
-      <agm-map [latitude]="lat" [longitude]="lng">
-        <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-        <agm-marker [latitude]="lat2" [longitude]="lng2"></agm-marker>
+      <agm-map [latitude]="route.init.lat" [longitude]="route.init.long" [zoom]="12">
+        <agm-marker [latitude]="route.init.lat" [longitude]="route.init.long"></agm-marker>
+        <agm-marker [latitude]="route.end.lat" [longitude]="route.end.long"></agm-marker>
       </agm-map>
       <div class="week">
         <ul>
-          <li *ngFor="let day of days" [ngClass]="{'active': day.active}" (click)="day.active = !day.active">{{day.label}}</li>
+          <li *ngFor="let day of days; let i = index" [ngClass]="{'active': route.days[day.fireLabel]}" (click)="day.active = !day.active">{{day.label}}</li>
         </ul>
       </div>
-      <div style="flex-direction: column">
-        <span><md-icon color="accent">alarm </md-icon> 07: 30 PM</span>
-        <small class="flex"></small>
-        <div style="flex-direction: row">
-          <md-icon class="type-icon">directions_walk</md-icon>
+      <div class="type">
+          <ul>
+            <li *ngFor="let type of types" [ngClass]="{'active': route.types[type.key]}" (click)="type.active = !type.active">
+              <md-icon>{{type.label}}</md-icon>
+            </li>
+          </ul>
         </div>
-      </div>
-      <!--md-select class="full-w" placeholder="Tipo de ruta">
-                                <md-option *ngFor="let trip of trips" [value]="trip">
-                                        {{ trip }}
-                                </md-option>
-                        </md-select-->
       <br>
       <button class="full-w" md-raised-button color="primary">Empezar ruta</button>
     </md-expansion-panel>

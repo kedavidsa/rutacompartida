@@ -17,36 +17,69 @@ export class HomePageComponent {
   lat2: number = 51.678418;
   lng2: number = 7.809007;
 
-  trips = ["Taxi", "Uber", "Transmilenio", "SITP", "Bicicleta", "Caminata"];
+  types = [
+    {
+      label: "local_taxi",
+      key: "taxi",
+      active: false
+    },
+    {
+      label: "directions_car",
+      key: "car",
+      active: false
+    },
+    {
+      label: "directions_bus",
+      key: "bus",
+      active: false
+    },
+    {
+      label: "directions_bike",
+      key: "bike",
+      active: false
+    },
+    {
+      label: "directions_walk",
+      key: "walk",
+      active: false
+    }
+  ];
 
   days = [
     {
+      label: "DO",
+      active: false,
+      fireLabel: 'D'
+    },
+    {
       label: "LU",
-      active: false
+      active: false,
+      fireLabel: 'L'
     },
     {
       label: "MA",
-      active: true
+      active: true,
+      fireLabel: 'M'
     },
     {
       label: "MI",
-      active: false
+      active: false,
+      fireLabel: 'I'
     },
     {
       label: "JU",
-      active: false
+      active: false,
+      fireLabel: 'J'
     },
     {
       label: "VI",
-      active: true
+      active: true,
+      fireLabel: 'V'
     },
     {
       label: "SA",
-      active: false
-    },
-    {
-      label: "DO",
-      active: false
+      active: false,
+      fireLabel: 'S'
     }
   ];
 
