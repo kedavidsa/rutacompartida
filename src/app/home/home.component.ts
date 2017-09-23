@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { Router } from "@angular/router";
 import { LoginService } from "../login.service";
+import { RutasService } from "../rutas.service";
 
 @Component({
   selector: "home-page",
@@ -79,7 +80,17 @@ export class HomePageComponent {
     }
   ];
   username: string;
-  constructor(private router: Router, private authService: LoginService){
+  constructor(
+    private router: Router, 
+    private authService: LoginService, 
+    private rutaServ: RutasService,
+  ){
+    console.log(this.rutaServ);
+    console.log(this.rutaServ.routes.subscribe(routes=>{
+      routes.forEach(route => {
+        console.log(route);
+    });
+    }));
     this.authService.user.subscribe(user=>{
       this.username = user.displayName;
     })

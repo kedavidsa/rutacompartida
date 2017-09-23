@@ -9,7 +9,7 @@ import { FormControl, Validators } from "@angular/forms";
 import { MapsAPILoader } from "@agm/core";
 import {} from "googlemaps";
 import { Router } from "@angular/router";
-import { Ruta, RutasService } from "../rutas.service";
+import { Ruta, RutasService, ACTIVO } from "../rutas.service";
 import { Http } from "@angular/http";
 import { ViewContainerRef } from "@angular/core";
 import _ from "lodash";
@@ -102,6 +102,7 @@ export class NewrutaComponent implements OnInit {
   ruta: Ruta = {
     key: "",
     nombre: "",
+    estado: ACTIVO,
     init: {
       direccion: "",
       lat: "",
@@ -143,9 +144,9 @@ export class NewrutaComponent implements OnInit {
   }
 
   ngOnInit() {}
-  save() {
-    this.saveAddress();
+  saveAddressOnFirebase() {
     
+
     this.ruta.init.lat = this.startCoordinates.lat;
     this.ruta.init.long = this.startCoordinates.lng;
     this.ruta.end.lat = this.endCoordinates.lat;
@@ -156,7 +157,6 @@ export class NewrutaComponent implements OnInit {
     this.types.forEach(a => {
       this.ruta.types[a.key] = a.active;
     });
-    console.log("save");
     this.rutaServ.guardarRuta(this.ruta).then(() => {
       this.router.navigate(["/home"]);
     });
@@ -166,7 +166,7 @@ export class NewrutaComponent implements OnInit {
     this.router.navigate(["/home"]);
   }
 
-  saveAddress() {
+  save() {
     const self = this;
     self.savingRoute = true;
     // Get start and end coordinates
@@ -200,5 +200,5 @@ export class NewrutaComponent implements OnInit {
     });
   }
 
-  saveAddressOnFirebase() {}
+ 
 }
