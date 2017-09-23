@@ -1,12 +1,40 @@
-<md-card>
-
-        <i class="fa fa-search"></i>
-
-        <md-checkbox>Lunes</md-checkbox>
-        <md-checkbox>Martes</md-checkbox>
-        <md-checkbox>Miercoles</md-checkbox>
-        <md-checkbox>Jueves</md-checkbox>
-        <md-checkbox>Viernes</md-checkbox>
-        <md-checkbox>Sabado</md-checkbox>
-        <md-checkbox>Domingo</md-checkbox>
-</md-card>
+<md-toolbar color="primary">
+  <span>Tus rutas</span>
+</md-toolbar>
+<div>
+  <md-accordion multi="false">
+    <md-expansion-panel *ngFor="let route of routes">
+      <md-expansion-panel-header>
+        <md-panel-title>
+          {{ route.name }}
+        </md-panel-title>
+        <md-panel-description>
+        </md-panel-description>
+      </md-expansion-panel-header>
+      <agm-map [latitude]="lat" [longitude]="lng">
+        <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+        <agm-marker [latitude]="lat2" [longitude]="lng2"></agm-marker>
+      </agm-map>
+      <div class="week">
+        <ul>
+          <li *ngFor="let day of days" [ngClass]="{'active': day.active}" (click)="day.active = !day.active">{{day.label}}</li>
+        </ul>
+      </div>
+      <div>
+        <span>07: 30 PM</span>
+        <small class="flex"></small>
+        <md-icon class="type-icon">directions_walk</md-icon>
+      </div>
+      <!--md-select class="full-w" placeholder="Tipo de ruta">
+                                <md-option *ngFor="let trip of trips" [value]="trip">
+                                        {{ trip }}
+                                </md-option>
+                        </md-select-->
+      <br>
+      <button class="full-w" md-raised-button color="primary">Empezar ruta</button>
+    </md-expansion-panel>
+  </md-accordion>
+</div>
+<button md-fab class="corner-buttons">
+        <md-icon class="md-24" (click)="add()">add</md-icon>
+</button>

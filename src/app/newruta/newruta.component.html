@@ -2,19 +2,19 @@
   <form class="form">
     <md-form-field>
       <input mdInput placeholder="Nombre Ruta" [formControl]="rutaFormControl">
-      <md-error *ngIf="emailFormControl.hasError('required')">
+      <md-error *ngIf="rutaFormControl.hasError('required')">
         Nombre es <strong>obligatorio</strong>
       </md-error>
     </md-form-field>
     <md-form-field>
       <input mdInput placeholder="Dirección de Inicio" [formControl]="diriniFormControl">
-      <md-error *ngIf="emailFormControl.hasError('required')">
+      <md-error *ngIf="diriniFormControl.hasError('required')">
         Dirección de inicio es <strong>obligatorio</strong>
       </md-error>
     </md-form-field>
     <md-form-field>
       <input mdInput placeholder="Dirección de Destino" [formControl]="dirdestFormControl">
-      <md-error *ngIf="emailFormControl.hasError('required')">
+      <md-error *ngIf="dirdestFormControl.hasError('required')">
         Dirección de destino es <strong>obligatorio</strong>
       </md-error>
     </md-form-field>
