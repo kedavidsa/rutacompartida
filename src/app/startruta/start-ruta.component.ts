@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from "@angular/router";
 
 import { LoginService } from "../login.service";
 import { AngularFireDatabase, FirebaseListObservable } from "angularfire2/database";
+import { Http } from "@angular/http";
 
 @Component({
   selector: "start-page",
@@ -14,7 +15,12 @@ export class StartPageComponent {
   
   @ViewChild('scrollMe') private myScrollContainer: ElementRef;
   title = "Started Route";
-
+  user = {
+    coords: {
+      latitude: 4.6374661999999995,
+      longitude: -74.0831427
+    }
+  };
   people=[{name:'Persona 1',email:'email@email.com' },{name:'Persona 2',email:'email@email.com' },{name:'Persona 3',email:'email@email.com' }];
 
   /*messages=[{username:'Persona 1',uid:'email@email.com',message:'Hola a todos',propio:false },
@@ -24,7 +30,7 @@ export class StartPageComponent {
   lat: number = 51.678418;
   lng: number = 7.809007;
   
-
+  viaje = {};
   sendMessageValue = '';
   username: string;
   uid:string;
@@ -33,8 +39,20 @@ export class StartPageComponent {
   constructor(
     private authService: LoginService,
     route: ActivatedRoute,
+    public http: Http,
     private db: AngularFireDatabase) {
     const viajeId = route.snapshot.paramMap.get('id');
+    db.object("/viajes/" + viajeId)
+    .subscribe(viaje=>{
+      this.viaje = viaje;
+      /*const gapiUrl = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?";
+      let placesUrl = `${gapiUrl}location=${viaje.init.lat}${viaje.init.long}&radius=500`;
+      this.http.request(placesUrl).subscribe(function(startResponse) {
+        const parsedStartResponse = JSON.parse(startResponse.text());
+        console.log(parsedStartResponse);
+      });*/
+    })
+    // Obtener arreglo de lugares cercanos
     this.messages = db.list("/viajes/" + viajeId + "/chat");
     this.authService.user.subscribe(user=>{
       this.username = user.displayName;
@@ -44,7 +62,13 @@ export class StartPageComponent {
   }
 
   ngOnInit() { 
+    const self = this;
     this.scrollToBottom();
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function (position) {
+        self.user.coords = position.coords;
+      });
+    }
   }
 
   ngAfterViewChecked() {        

@@ -48,8 +48,8 @@
         </div>
 
         <md-toolbar>Punto de encuentro recomendado</md-toolbar>
-        <agm-map [latitude]="lat" [longitude]="lng">
-                        <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+        <agm-map [latitude]="user.coords.latitude" [longitude]="user.coords.longitude">
+                        <agm-marker [latitude]="user.coords.latitude" [longitude]="user.coords.longitude"></agm-marker>
         </agm-map>
         
         
