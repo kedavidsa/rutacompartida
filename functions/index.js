@@ -157,19 +157,28 @@ exports.crearViaje = functions.database
                                 nombre: ruta.key,
                                 date: new Date(),
                                 types: ruta.types,
-                                //viajeros:[{key:ruta.key}]
+                                viajeros:[{key:ruta.key}]
                             }).then(function (viajeRecord) {
                                     // See the UserRecord reference doc for the contents of userRecord.
                                     console.log("Successfully created new viaje:", viajeRecord.uid);
                                     event.data.ref.update({
                                         uid: userRecord.uid
                                     });
+
+                                    var ref2 = db.ref("/usuarios/"+pushId);
+                                    ref2.child('viajes').push(viajeKey);
+                                  
+
+
                                 })
                                 .catch(function (error) {
                                     console.log("Error creating new viaje:", error);
                                 });
 
                         }else{
+
+                            var itemsProcessed = 0;
+                            var viajeCreado=false;
                             snap.forEach(via => {
                                 let viaje = via.val();
                                 
@@ -180,17 +189,55 @@ exports.crearViaje = functions.database
                                 console.log(distance2+" d2");
     
                                 //Validate by range
-                                if(distance1<1&&distance2<1){
+                                if(!viajeCreado&&distance1<1&&distance2<1){
                                     //Im a kilomether near to the viaje
                                     //Add me to the current viaje
                                     console.log("Hizo match con una ruta");
     
                                     ref.child(viaje.key).child('viajeros').push(ruta.key);
+
+                                    var ref2 = db.ref("/usuarios/"+pushId);
+                                    ref2.child('viajes').push(viajeKey);
                                     
     
                                     
-                                    //viajeCreado=true;
+                                    viajeCreado=true;
                                     
+                                    
+                                }
+
+                                itemsProcessed++;
+                                if(!viajeCreado&&itemsProcessed === snap.length) {
+
+                                    console.log("No matches viajes, creatndo nuevo");
+                                    //No matches, we have to create a new one
+                                    let viajeKey = ref.push().key
+                                    ref.child(viajeKey).set(
+                                    {
+                                        key : viajeKey,
+                                        end: ruta.end,
+                                        init: ruta.init,
+                                        nombre: ruta.key,
+                                        date: new Date(),
+                                        types: ruta.types,
+                                        viajeros:[{key:ruta.key}]
+                                    }).then(function (viajeRecord) {
+                                            // See the UserRecord reference doc for the contents of userRecord.
+                                            console.log("Successfully created new viaje:", viajeRecord.uid);
+                                            event.data.ref.update({
+                                                uid: userRecord.uid
+                                            });
+        
+                                            var ref2 = db.ref("/usuarios/"+pushId);
+                                            ref2.child('viajes').push(viajeKey);
+                                          
+        
+        
+                                        })
+                                        .catch(function (error) {
+                                            console.log("Error creating new viaje:", error);
+                                        });
+                                  
                                 }
                                 
                                 
