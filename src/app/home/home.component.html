@@ -41,11 +41,13 @@
       <div *ngIf="route.estado===2" style="flex-direction:column; display:flex;justify-content:space-between; align-items:center">
         <div style="display:flex;justify-content:space-between; flex-direction:column">
           <h3>Grupos para tu viaje</h3>
+          <span *ngIf="!returnViajes(route.viajes)">Aun no hay grupos de viaje para esta ruta</span>
           <div style="display:flex;justify-content:space-between; flex-direction:column">
-          <button (click)="travelers()" md-raised-button color="primary">15<md-icon style="margin-left:15px">person_pin</md-icon></button>
+          <button *ngFor="let trip of returnViajes(route.viajes)"
+          (click)="travelers(trip.viajeKey)" md-raised-button color="primary">{{trip.viajeros}}<md-icon style="margin-left:15px">person_pin</md-icon></button>
           <br>
           </div>
-          <button class="full-w" md-raised-button color="primary" (click)="editRoute(route)">EMPEZAR RUTA<md-icon style="margin-left:10px">nature_people</md-icon></button>
+          <button *ngIf="returnViajes(route.viajes)" class="full-w" md-raised-button color="primary" (click)="editRoute(route)">EMPEZAR RUTA<md-icon style="margin-left:10px">nature_people</md-icon></button>
         </div>
       </div>
         <div *ngIf="route.estado===3" style="flex-direction:column; display:flex;justify-content:space-between; align-items:center">

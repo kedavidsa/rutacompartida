@@ -3,10 +3,10 @@
 </md-toolbar>
 <div>
   <md-list class="travelers">
-    <md-list-item *ngFor="let person of [1,2,3,4]; let i = index">
-      <img src="http://lorempixel.com/100/100/people/{{i}}/" alt="">
+    <md-list-item *ngFor="let person of peopleArr">
+      <img src="{{person.photo}}" alt="">
       <div class="name-container">
-          <span>Este es el nombre de la persona</span>
+          <span>{{person.nombre}}</span>
           <div style="text-align: right;">
               <md-icon *ngFor="let star of [1,2,3,4,5]">star</md-icon>
           </div>

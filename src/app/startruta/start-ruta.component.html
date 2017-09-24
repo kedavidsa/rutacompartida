@@ -4,13 +4,13 @@
       
 <div>
         
-        <md-chip-list style="margin:20px;">
+        <!--md-chip-list style="margin:20px;">
                 <md-chip *ngFor="let person of people"><md-icon>person_pin</md-icon>{{person.name}}</md-chip>
                                 
-        </md-chip-list>
+        </md-chip-list-->
         
         <div class="chat-body" #scrollMe>
-                        <div *ngFor="let message of messages"> 
+                        <div *ngFor="let message of messages | async"> 
                                         
                                         <div  class="bubblewrap pull-left" *ngIf="!(message.uid==uid)">
                                         <span  class="bubble pull-left message-u">
@@ -50,7 +50,6 @@
         <md-toolbar>Punto de encuentro recomendado</md-toolbar>
         <agm-map [latitude]="lat" [longitude]="lng">
                         <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-                        <agm-marker [latitude]="lat2" [longitude]="lng2"></agm-marker>
         </agm-map>
         
         
