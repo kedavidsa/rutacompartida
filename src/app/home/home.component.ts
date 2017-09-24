@@ -116,9 +116,16 @@ export class HomePageComponent {
       case BUSCAR:
         ruta.estado = EMPEZAR;
         break;
+      case EMPEZAR:
+        ruta.estado = ACTIVO;
+        break;
       default:
         break;
     }
+    this.rutaServ.editarRuta(ruta);
+  }
+  endSearch(ruta: Ruta){
+    ruta.estado = ACTIVO;
     this.rutaServ.editarRuta(ruta);
   }
 

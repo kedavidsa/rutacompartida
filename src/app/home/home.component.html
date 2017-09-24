@@ -2,7 +2,7 @@
   <span>Tus rutas</span>
 </md-toolbar>
 <div>
-  <div style="display:flex;flex-direction:column; align-items:center; justify-content:space-between; margin:20px 0px"><img class="avatar" [src]="userpic" width="60" height="60" style="border-radius=50%">
+  <div style="display:flex;flex-direction:column; align-items:center; justify-content:space-between; margin:20px 0px"><img class="avatar" [src]="userpic" width="60" height="60">
     <h3 style="margin:20px; font-family:Roboto">Bienvenido {{username}}</h3>
   </div>
   <md-accordion multi="false">
@@ -41,13 +41,15 @@
       <div *ngIf="route.estado===2" style="flex-direction:column; display:flex;justify-content:space-between; align-items:center">
         <div style="display:flex;justify-content:space-between; flex-direction:column">
           <h3>Grupos para tu viaje</h3>
-          <span *ngIf="!returnViajes(route.viajes)">Aun no hay grupos de viaje para esta ruta</span>
+          <span *ngIf="!returnViajes(route.viajes)"><md-spinner style="margin-left:15px"></md-spinner>Aun no hay grupos de viaje para esta ruta</span>
           <div style="display:flex;justify-content:space-between; flex-direction:column">
           <button *ngFor="let trip of returnViajes(route.viajes)"
           (click)="travelers(trip.viajeKey)" md-raised-button color="primary">{{trip.viajeros}}<md-icon style="margin-left:15px">person_pin</md-icon></button>
           <br>
           </div>
           <button *ngIf="returnViajes(route.viajes)" class="full-w" md-raised-button color="primary" (click)="editRoute(route)">EMPEZAR RUTA<md-icon style="margin-left:10px">nature_people</md-icon></button>
+          <br>
+          <button class="full-w" md-raised-button color="accent" (click)="endSearch(route)">PARAR BUSQUEDA<md-icon style="margin-left:10px">pan_tool</md-icon></button>
         </div>
       </div>
         <div *ngIf="route.estado===3" style="flex-direction:column; display:flex;justify-content:space-between; align-items:center">
@@ -74,7 +76,7 @@
           <md-form-field style="width:100%" class="example-full-width">
             <textarea style="width:100%" mdInput placeholder="Comentarios"></textarea>
           </md-form-field>
-          <button class="full-w" md-raised-button color="primary">EN MI DESTINO <md-icon style="margin-left:10px">sentiment_very_satisfied</md-icon></button>
+          <button class="full-w" md-raised-button color="primary" (click)="editRoute(route)">EN MI DESTINO <md-icon style="margin-left:10px">sentiment_very_satisfied</md-icon></button>
         </div>
     </md-expansion-panel>
   </md-accordion>
