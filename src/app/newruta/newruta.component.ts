@@ -26,8 +26,6 @@ export class NewrutaComponent implements OnInit {
   startCoordinates;
   endCoordinates;
   end = "";
-  horas = _.range(1, 25);
-  minutos = _.range(0, 60);
   savingRoute = false;
 
   rutaFormControl = new FormControl("", [Validators.required]);
