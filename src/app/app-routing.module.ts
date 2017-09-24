@@ -7,16 +7,19 @@ import { HomePageComponent } from "./home/home.component";
 import { NewrutaComponent } from "./newruta/newruta.component";
 import { StartPageComponent } from "./startruta/start-ruta.component";
 import { RequestRutaComponent } from "./request-ruta/request-ruta.component";
+import { LoginService } from "./login.service";
+import { AppGuard } from "./app.guard";
+import { LoginGuard } from "./login.guard";
 import { ViajerosViajeComponent } from "./viajeros-viaje/viajeros-viaje.component";
 
 const properties: Routes = [
   { path: "", redirectTo: "/login", pathMatch: "full" },
-  { path: "login", component: LoginPageComponent },
-  { path: "home", component: HomePageComponent },
-  { path: "newruta", component: NewrutaComponent },
-  { path: "requestruta", component: RequestRutaComponent },
-  { path: "started", component: StartPageComponent },
-  { path: "viajeros-viaje/:id", component: ViajerosViajeComponent },
+  { path: "login", component: LoginPageComponent, canActivate: [LoginGuard]},
+  { path: "home", component: HomePageComponent ,  canActivate: [AppGuard]},
+  { path: "newruta", component: NewrutaComponent,  canActivate: [AppGuard] },
+  { path: "requestruta", component: RequestRutaComponent,  canActivate: [AppGuard] },
+  { path: "started", component: StartPageComponent,  canActivate: [AppGuard] },
+  { path: "viajeros-viaje/:id", component: ViajerosViajeComponent, canActivate: [AppGuard] }
   
 ];
 

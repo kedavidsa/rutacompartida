@@ -58,6 +58,8 @@ import { RutasService } from "./rutas.service";
 import { AngularFireDatabase } from "angularfire2/database";
 import { RequestRutaComponent } from './request-ruta/request-ruta.component';
 import { ViajerosViajeComponent } from './viajeros-viaje/viajeros-viaje.component';
+import { AppGuard } from "./app.guard";
+import { LoginGuard } from "./login.guard";
 export const config = {
   apiKey: "AIzaSyC_CwlZTdycKDkbbmbF7ztxqmehYVj3kP8",
   authDomain: "afiny4pt.firebaseapp.com",
@@ -146,7 +148,7 @@ export const config = {
     MdToolbarModule,
     MdTooltipModule
   ],
-  providers: [LoginService, AngularFireAuth, AngularFireDatabase, RutasService ],
+  providers: [LoginService, AngularFireAuth, AngularFireDatabase, RutasService, LoginGuard, AppGuard ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
