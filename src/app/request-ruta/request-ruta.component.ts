@@ -53,15 +53,17 @@ export class RequestRutaComponent implements OnInit {
     public http: Http) {
   }
 
+ 
   ngOnInit() {
 
     // Get user geolocation
     const self = this;
+    
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function (position) {
+        console.log(position);
         self.user.coords = position.coords;
-        self.destiny.lat = self.user.coords.latitude;
-        self.destiny.long =  self.user.coords.longitude;
+        
       });
     }
   }
@@ -69,9 +71,11 @@ export class RequestRutaComponent implements OnInit {
   drawDestinyAddress(event: any){
     const self = this;
     const gapiUrl = "https://maps.googleapis.com/maps/api/geocode/json?";
-    let destinyUrl = `${gapiUrl}address=${this.destiny}&key=AIzaSyCLHVsmTkK8mWKnfYJUEQmkUFsy_KI1kIs`;
+    
+    let destinyUrl = `${gapiUrl}address=${this.destiny.name}&key=AIzaSyCLHVsmTkK8mWKnfYJUEQmkUFsy_KI1kIs`;
 
     this.http.request(destinyUrl).subscribe(function(destinyResponse) {
+      
       const parsedDestinyResponse = JSON.parse(destinyResponse.text()).results[0].geometry.location;
       console.log(parsedDestinyResponse);
       self.destiny.lat = parsedDestinyResponse.lat;
