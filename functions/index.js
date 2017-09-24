@@ -1,3 +1,4 @@
+
 const functions = require('firebase-functions');
 
 // // Create and Deploy Your First Cloud Functions
@@ -10,6 +11,11 @@ const functions = require('firebase-functions');
 // The Firebase Admin SDK to access the Firebase Realtime Database.
 const admin = require("firebase-admin");
 admin.initializeApp(functions.config().firebase);
+const googleMapsClient = require('@google/maps').createClient({
+    key: 'AIzaSyCb-zSaO_XizGF7fgnsBeLX5-MeRvVMagw'
+  });
+
+
 
 
 exports.crearViaje = functions.database
