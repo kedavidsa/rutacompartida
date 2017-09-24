@@ -36,7 +36,7 @@ exports.crearViaje = functions.database
             if (ruta.estado == 2) {
                 console.log("Ruta estado 2");
                 if (event.data.previous.val()[key].estado == 1) {
-                    console.log("Ruta estado previo 1. Creando viaje");
+                    console.log("Ruta estado previo 1. Validando matches ");
 
                     //First we check if exist a travel that match my conditions
                     var db = admin.database();
@@ -72,7 +72,15 @@ exports.crearViaje = functions.database
                                     
                                     console.log("Event pushId"+user);
                                     var refRutas = db.ref("/usuarios/"+user+"/viajes");
-                                    refRutas.child(ruta.key).push({date: ''+(new Date()).getTime(),viajeKey:viajeKey});
+                                    refRutas.child(ruta.key).push({date: ''+(new Date()).getTime(),viajeKey:viajeKey}).then(function (viajeRecord) {
+                                        // See the UserRecord reference doc for the contents of userRecord.
+                                        console.log("Successfully created new viaje:");
+                                         
+    
+                                    })
+                                    .catch(function (error) {
+                                        console.log("Error creating new viaje:");
+                                    });;
                                   
                                     
 
@@ -109,7 +117,15 @@ exports.crearViaje = functions.database
                                     //ref2.child('viajes').push({rutaKey:ruta.key,date: ''+(new Date()).getTime(),viajeKey:viajeKey});
                                     console.log("Event pushId"+user);
                                     var refRutas = db.ref("/usuarios/"+user+"/viajes");
-                                    refRutas.child(ruta.key).push({date: ''+(new Date()).getTime(),viajeKey:viajeKey});
+                                    refRutas.child(ruta.key).push({date: ''+(new Date()).getTime(),viajeKey:viajeKey}).then(function (viajeRecord) {
+                                        // See the UserRecord reference doc for the contents of userRecord.
+                                        console.log("Successfully created new viaje:");
+                                         
+    
+                                    })
+                                    .catch(function (error) {
+                                        console.log("Error creating new viaje:");
+                                    });;
                                   
 
                                     
@@ -149,7 +165,15 @@ exports.crearViaje = functions.database
                                             //ref2.child('viajes').push({rutaKey:ruta.key,date: ''+(new Date()).getTime(),viajeKey:viajeKey});
                                             console.log("Event pushId"+user);
                                             var refRutas = db.ref("/usuarios/"+user+"/viajes");
-                                            refRutas.child(ruta.key).push({date: ''+(new Date()).getTime(),viajeKey:viajeKey});
+                                            refRutas.child(ruta.key).push({date: ''+(new Date()).getTime(),viajeKey:viajeKey}).then(function (viajeRecord) {
+                                                // See the UserRecord reference doc for the contents of userRecord.
+                                                console.log("Successfully created new viaje:");
+                                                 
+            
+                                            })
+                                            .catch(function (error) {
+                                                console.log("Error creating new viaje:");
+                                            });;
                                           
         
         
