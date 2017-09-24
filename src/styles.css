@@ -85,3 +85,10 @@ body, app-root {
 .type li.active{
   background: #000000;
 }
+
+login-page{
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+  display: flex;
+}
