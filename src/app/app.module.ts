@@ -57,6 +57,7 @@ import { LoginService } from "./login.service";
 import { RutasService } from "./rutas.service";
 import { AngularFireDatabase } from "angularfire2/database";
 import { RequestRutaComponent } from './request-ruta/request-ruta.component';
+import { ViajerosViajeComponent } from './viajeros-viaje/viajeros-viaje.component';
 export const config = {
   apiKey: "AIzaSyC_CwlZTdycKDkbbmbF7ztxqmehYVj3kP8",
   authDomain: "afiny4pt.firebaseapp.com",
@@ -66,7 +67,7 @@ export const config = {
   messagingSenderId: "378278091539"
 };
 @NgModule({
-  declarations: [AppComponent, HomePageComponent, LoginPageComponent, NewrutaComponent,StartPageComponent, RequestRutaComponent],
+  declarations: [AppComponent, HomePageComponent, LoginPageComponent, NewrutaComponent,StartPageComponent, RequestRutaComponent, ViajerosViajeComponent],
   imports: [
     ToastModule.forRoot(),
     HttpModule,

@@ -7,6 +7,7 @@ import { HomePageComponent } from "./home/home.component";
 import { NewrutaComponent } from "./newruta/newruta.component";
 import { StartPageComponent } from "./startruta/start-ruta.component";
 import { RequestRutaComponent } from "./request-ruta/request-ruta.component";
+import { ViajerosViajeComponent } from "./viajeros-viaje/viajeros-viaje.component";
 
 const properties: Routes = [
   { path: "", redirectTo: "/login", pathMatch: "full" },
@@ -15,6 +16,7 @@ const properties: Routes = [
   { path: "newruta", component: NewrutaComponent },
   { path: "requestruta", component: RequestRutaComponent },
   { path: "started", component: StartPageComponent },
+  { path: "viajeros-viaje/:id", component: ViajerosViajeComponent },
   
 ];
 

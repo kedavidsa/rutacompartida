@@ -1,0 +1,20 @@
+.travelers img{
+    border-radius: 50%;
+    height: 100%;
+}
+
+.travelers md-list-item{
+    border-bottom: solid lightgrey 1px;
+    padding: 0.5em 0;
+}
+
+.travelers md-icon{
+    position: relative;
+    top: 4px;
+    color: orange;
+}
+
+.travelers .name-container{
+    text-align: right; 
+    width: 100%;
+}
