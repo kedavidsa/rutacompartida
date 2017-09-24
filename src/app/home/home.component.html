@@ -19,7 +19,7 @@
       </md-expansion-panel-header>
 
       <div *ngIf="route.estado===1">
-        <agm-map [latitude]="route.init.lat" [longitude]="route.init.long">
+        <agm-map [latitude]="route.init.lat" [longitude]="route.init.long" [zoom]="11">
           <agm-marker [latitude]="route.init.lat" [longitude]="route.init.long"></agm-marker>
           <agm-marker [latitude]="route.end.lat" [longitude]="route.end.long"></agm-marker>
         </agm-map>
