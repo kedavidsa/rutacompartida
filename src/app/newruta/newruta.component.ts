@@ -26,8 +26,6 @@ export class NewrutaComponent implements OnInit {
   startCoordinates;
   endCoordinates;
   end = "";
-  horas = _.range(1, 25);
-  minutos = _.range(0, 60);
   savingRoute = false;
 
   rutaFormControl = new FormControl("", [Validators.required]);
@@ -192,6 +190,8 @@ export class NewrutaComponent implements OnInit {
           : null;
         self.savingRoute = false;
         if (self.endCoordinates && self.startCoordinates) {
+          console.log(self.startCoordinates);
+          console.log(self.endCoordinates);
           self.saveAddressOnFirebase();
         } else {
           self.toastr.error("Corrige las direcciones!", "Error");

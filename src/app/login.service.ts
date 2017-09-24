@@ -20,3 +20,9 @@ export class LoginService {
     }
 
 }
+export interface Usuario
+{
+key: string;
+photo: string;
+rutas: {};
+};

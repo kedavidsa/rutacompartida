@@ -1,12 +1,40 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
-body {
-  margin: 0px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: roboto;
+body{
+  margin: 0;
 }
+/*
+html{
+  background: black;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  align-self: center center;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+}
+home-page{
+  position: relative;
+}
+body, app-root {
+  background: white;
+  max-width: 400px;
+  min-width: 240px;
+  height: 600px;
+  display: flex;
+  margin: 0px;
+  font-family: roboto;
+  position: relative;
+  overflow-y: auto;
+}
+
+@media(max-width: 700px){
+  body, app-root{
+    //width: 100%;  
+    height: 100%;
+  }
+}*/
 
 .example-container {
   width: 100%;
@@ -61,3 +89,18 @@ body {
 .type li.active{
   background: #000000;
 }
+
+login-page{
+  width: 100vw;
+  justify-content: space-around;
+  align-items: center;
+  display: flex;
+}
+
+html, body, login-page{
+  height: 100%;
+}
+
+/*app-home, app-newruta{
+ width: 100%;
+}*/
