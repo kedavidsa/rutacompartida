@@ -22,9 +22,10 @@ export class ViajerosViajeComponent implements OnInit {
       snapshots.forEach(snapshot => {
         let item = db.object("/usuarios/" + snapshot.val().userKey)
         .subscribe(user=>{
+          console.log(user);
           let isInArr = false;
           for(var i in this.peopleArr){
-            if(user.id == this.peopleArr[i].id){
+            if(user.nombre == this.peopleArr[i].nombre){
               isInArr = true;
             }
           }
