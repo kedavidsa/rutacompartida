@@ -124,6 +124,10 @@ export class HomePageComponent {
     }
     this.rutaServ.editarRuta(ruta);
   }
+  endSearch(ruta: Ruta){
+    ruta.estado = ACTIVO;
+    this.rutaServ.editarRuta(ruta);
+  }
 
   returnViajes(viajes){
     if(!viajes){ 
