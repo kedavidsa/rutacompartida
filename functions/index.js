@@ -233,3 +233,14 @@ exports.newuser = functions.auth.user().onCreate(event => {
   const Url = user.photoURL;
   let ref = admin.database().ref("/usuarios").child(user.uid).set({photo: Url});
 });
+
+
+
+exports.crearViajeUsuario = functions.database
+.ref("/viajes/{pushId}")
+.onWrite(event => {
+    const viaje = event.data.val();  
+    console.log("Viaje");
+    console.log(viaje);
+
+});
