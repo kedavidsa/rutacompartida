@@ -10,6 +10,7 @@ import { RequestRutaComponent } from "./request-ruta/request-ruta.component";
 import { LoginService } from "./login.service";
 import { AppGuard } from "./app.guard";
 import { LoginGuard } from "./login.guard";
+import { ViajerosViajeComponent } from "./viajeros-viaje/viajeros-viaje.component";
 
 const properties: Routes = [
   { path: "", redirectTo: "/login", pathMatch: "full" },
@@ -18,6 +19,7 @@ const properties: Routes = [
   { path: "newruta", component: NewrutaComponent,  canActivate: [AppGuard] },
   { path: "requestruta", component: RequestRutaComponent,  canActivate: [AppGuard] },
   { path: "started", component: StartPageComponent,  canActivate: [AppGuard] },
+  { path: "viajeros-viaje/:id", component: ViajerosViajeComponent, canActivate: [AppGuard] }
   
 ];
 
