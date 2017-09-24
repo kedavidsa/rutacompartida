@@ -170,10 +170,11 @@ function distance(lat1, lon1, lat2, lon2) {
 exports.newuser = functions.auth.user().onCreate(event => {
   const user = event.data; // The Firebase user.
   const Url = user.photoURL;
+  const name = user.displayName;
   let ref = admin
     .database()
     .ref("/usuarios/" + user.uid)
-    .set({ photo: Url });
+    .set({ photo: Url, nombre: name });
 });
 
 
