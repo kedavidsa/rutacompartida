@@ -35,14 +35,15 @@ export class StartPageComponent {
   username: string;
   uid:string;
   messages: FirebaseListObservable<any>;
-  
+  viajeId;
   constructor(
     private authService: LoginService,
     route: ActivatedRoute,
+    private router: Router,
     public http: Http,
     private db: AngularFireDatabase) {
-    const viajeId = route.snapshot.paramMap.get('id');
-    db.object("/viajes/" + viajeId)
+    this.viajeId = route.snapshot.paramMap.get('id');
+    db.object("/viajes/" + this.viajeId)
     .subscribe(viaje=>{
       this.viaje = viaje;
       /*const gapiUrl = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?";
@@ -53,7 +54,7 @@ export class StartPageComponent {
       });*/
     })
     // Obtener arreglo de lugares cercanos
-    this.messages = db.list("/viajes/" + viajeId + "/chat");
+    this.messages = db.list("/viajes/" + this.viajeId + "/chat");
     this.authService.user.subscribe(user=>{
       this.username = user.displayName;
       this.uid = user.uid;
@@ -89,6 +90,10 @@ export class StartPageComponent {
     }
     
     
+  }
+
+  back(){
+    this.router.navigate(["/viajeros-viaje",this.viajeId ]);
   }
   
 }

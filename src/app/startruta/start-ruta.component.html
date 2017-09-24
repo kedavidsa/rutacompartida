@@ -45,12 +45,16 @@
                         
                 </md-form-field>
                 <button md-raised-button color="primary" (click)="sendMessage()"><md-icon>send</md-icon></button>
+                <button md-button color="accent" (click)="back()" md-raised-button>Atras</button>
+                
+                
         </div>
 
         <md-toolbar>Punto de encuentro recomendado</md-toolbar>
         <agm-map [latitude]="user.coords.latitude" [longitude]="user.coords.longitude">
                         <agm-marker [latitude]="user.coords.latitude" [longitude]="user.coords.longitude"></agm-marker>
         </agm-map>
+
         
         
 

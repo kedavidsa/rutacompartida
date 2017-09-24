@@ -10,13 +10,14 @@ import { AngularFireDatabase, FirebaseListObservable } from "angularfire2/databa
 export class ViajerosViajeComponent implements OnInit {
   people: FirebaseListObservable<any>;
   peopleArr = [];
+  viajeId;
   constructor(
     route: ActivatedRoute, 
     private router: Router,
     private db: AngularFireDatabase) { 
-    const viajeId = route.snapshot.paramMap.get('id');
+    this.viajeId = route.snapshot.paramMap.get('id');
     // Obtener el listado de viajeros del viaje
-    db.list("/viajes/" + viajeId + "/viajeros", { preserveSnapshot: true})
+    db.list("/viajes/" + this.viajeId + "/viajeros", { preserveSnapshot: true})
     .subscribe(snapshots=>{
       snapshots.forEach(snapshot => {
         let item = db.object("/usuarios/" + snapshot.val().userKey)
@@ -33,7 +34,7 @@ export class ViajerosViajeComponent implements OnInit {
   }
 
   openChat(){
-    this.router.navigate(["/started"]);
+    this.router.navigate(["/started",this.viajeId]);
   }
 
   back(){
