@@ -192,6 +192,8 @@ export class NewrutaComponent implements OnInit {
           : null;
         self.savingRoute = false;
         if (self.endCoordinates && self.startCoordinates) {
+          console.log(self.startCoordinates);
+          console.log(self.endCoordinates);
           self.saveAddressOnFirebase();
         } else {
           self.toastr.error("Corrige las direcciones!", "Error");
