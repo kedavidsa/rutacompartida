@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-viajeros-viaje',
@@ -8,7 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ViajerosViajeComponent implements OnInit {
 
-  constructor(route: ActivatedRoute) { 
+  constructor(route: ActivatedRoute, private router: Router) { 
     const viajeId = route.snapshot.paramMap.get('id');
     console.log(viajeId);
   }
@@ -17,5 +17,14 @@ export class ViajerosViajeComponent implements OnInit {
     // Get all travelers in viaje
     
   }
+
+  openChat(){
+    this.router.navigate(["/started"]);
+  }
+
+  back(){
+    this.router.navigate(["/home"]);
+  }
+  
 
 }

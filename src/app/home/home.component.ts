@@ -93,6 +93,9 @@ export class HomePageComponent {
   add() {
     this.router.navigate(["/newruta"]);
   }
+  travelers(){
+    this.router.navigate(["/viajeros-viaje/5"]);
+  }
   getName(estado: number) {
     switch (estado) {
       case ACTIVO:
