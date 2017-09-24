@@ -92,3 +92,7 @@ login-page{
   align-items: center;
   display: flex;
 }
+
+app-home{
+  width: 100%;
+}
