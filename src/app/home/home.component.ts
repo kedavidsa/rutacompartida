@@ -1,22 +1,15 @@
 import { Component } from "@angular/core";
 import { Router } from "@angular/router";
 import { LoginService } from "../login.service";
-import { RutasService } from "../rutas.service";
+import { RutasService, Ruta, BUSCAR, ACTIVO, EMPEZAR } from "../rutas.service";
 
 @Component({
-  selector: "home-page",
+  selector: "app-home",
   templateUrl: "./home.component.html",
   styleUrls: ["./home.component.css"]
 })
 export class HomePageComponent {
   title = "Home";
-
-  lat: number = 51.678418;
-  lng: number = 7.809007;
-
-  lat2: number = 51.678418;
-  lng2: number = 7.809007;
-
   types = [
     {
       label: "local_taxi",
@@ -49,86 +42,80 @@ export class HomePageComponent {
     {
       label: "DO",
       active: false,
-      fireLabel: 'D'
+      fireLabel: "D"
     },
     {
       label: "LU",
       active: false,
-      fireLabel: 'L'
+      fireLabel: "L"
     },
     {
       label: "MA",
       active: true,
-      fireLabel: 'M'
+      fireLabel: "M"
     },
     {
       label: "MI",
       active: false,
-      fireLabel: 'I'
+      fireLabel: "I"
     },
     {
       label: "JU",
       active: false,
-      fireLabel: 'J'
+      fireLabel: "J"
     },
     {
       label: "VI",
       active: true,
-      fireLabel: 'V'
+      fireLabel: "V"
     },
     {
       label: "SA",
       active: false,
-      fireLabel: 'S'
-    }
-  ];
-
-  routes = [
-    {
-      name: "Oficina - Estación Alcala",
-      start: "calle falsa 123",
-      startLat: "",
-      startLon: "",
-      end: "calle falsa 123",
-      endLat: "",
-      endLon: ""
-    },
-    {
-      name: "Oficina - Casa",
-      start: "calle falsa 123",
-      startLat: "",
-      startLon: "",
-      end: "calle falsa 123",
-      endLat: "",
-      endLon: ""
-    },
-    {
-      name: "Casa - Oficina",
-      start: "calle falsa 123",
-      startLat: "",
-      startLon: "",
-      end: "calle falsa 123",
-      endLat: "",
-      endLon: ""
+      fireLabel: "S"
     }
   ];
   username: string;
   userpic: string;
   constructor(
-    private router: Router, 
-    private authService: LoginService, 
-    public rutaServ: RutasService,
-  ){
-    this.authService.user.subscribe(user=>{
+    private router: Router,
+    private authService: LoginService,
+    public rutaServ: RutasService
+  ) {
+    this.authService.user.subscribe(user => {
       this.username = user.displayName;
       this.userpic = user.photoURL;
-    })
+    });
   }
   getReverseGeocoding(address) {
-    console.log("test");
     return address;
   }
   add() {
     this.router.navigate(["/newruta"]);
+  }
+  getName(estado: number) {
+    switch (estado) {
+      case ACTIVO:
+        return "ACTIVO";
+      case BUSCAR:
+        return "BUSCANDO";
+      case EMPEZAR:
+        return "EN CURSO";
+      default:
+        return "";
+    }
+  }
+  editRoute(ruta: Ruta) {
+    switch (ruta.estado) {
+      case ACTIVO:
+        ruta.estado = BUSCAR;
+        break;
+      case BUSCAR:
+        ruta.estado = EMPEZAR;
+        break;
+      default:
+        break;
+    }
+    this.rutaServ.editarRuta(ruta);
   }
 }

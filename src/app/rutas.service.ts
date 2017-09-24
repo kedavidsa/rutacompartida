@@ -52,6 +52,7 @@ export interface Ruta {
     car: boolean;
     walk: boolean;
   };
+  viajes?: {};
 }
 export interface Direccion {
   direccion: string;
