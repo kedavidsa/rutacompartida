@@ -93,8 +93,8 @@ export class HomePageComponent {
   add() {
     this.router.navigate(["/newruta"]);
   }
-  travelers(){
-    this.router.navigate(["/viajeros-viaje/5"]);
+  travelers(viajeKey){
+    this.router.navigate(["/viajeros-viaje/" + viajeKey]);
   }
   getName(estado: number) {
     switch (estado) {
@@ -120,5 +120,17 @@ export class HomePageComponent {
         break;
     }
     this.rutaServ.editarRuta(ruta);
+  }
+
+  returnViajes(viajes){
+    if(!viajes){ 
+      return false;
+    }
+    var arr = [];
+    var key = Object.keys(viajes)[0]
+    arr.push(viajes[key]);
+    if(viajes){
+      return arr;
+    }
   }
 }
