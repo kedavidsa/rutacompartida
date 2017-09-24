@@ -2,7 +2,7 @@
   <span>Tus rutas</span>
 </md-toolbar>
 <div>
-  <div style="display:flex;flex-direction:column; align-items:center; justify-content:space-between; margin:20px 0px"><img class="avatar" [src]="userpic" width="60" height="60" style="border-radius=50%">
+  <div style="display:flex;flex-direction:column; align-items:center; justify-content:space-between; margin:20px 0px"><img class="avatar" [src]="userpic" width="60" height="60">
     <h3 style="margin:20px; font-family:Roboto">Bienvenido {{username}}</h3>
   </div>
   <md-accordion multi="false">
@@ -72,7 +72,7 @@
           <md-form-field style="width:100%" class="example-full-width">
             <textarea style="width:100%" mdInput placeholder="Comentarios"></textarea>
           </md-form-field>
-          <button class="full-w" md-raised-button color="primary">EN MI DESTINO <md-icon style="margin-left:10px">sentiment_very_satisfied</md-icon></button>
+          <button class="full-w" md-raised-button color="primary" (click)="editRoute(route)">EN MI DESTINO <md-icon style="margin-left:10px">sentiment_very_satisfied</md-icon></button>
         </div>
     </md-expansion-panel>
   </md-accordion>

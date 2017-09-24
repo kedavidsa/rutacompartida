@@ -19,7 +19,7 @@ exports.crearViaje = functions.database
   .onWrite(event => {
     const rutas = event.data.val();
     const user = event.params.pushId;
-    console.log("Crear viaje Usuario "+user)
+    console.log("Crear viaje Usuario "+user);
     console.log(rutas);
 
     var keys = Object.keys(rutas);

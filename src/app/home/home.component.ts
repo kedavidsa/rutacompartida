@@ -93,7 +93,7 @@ export class HomePageComponent {
   add() {
     this.router.navigate(["/newruta"]);
   }
-  travelers(){
+  travelers() {
     this.router.navigate(["/viajeros-viaje/5"]);
   }
   getName(estado: number) {
@@ -115,6 +115,9 @@ export class HomePageComponent {
         break;
       case BUSCAR:
         ruta.estado = EMPEZAR;
+        break;
+      case EMPEZAR:
+        ruta.estado = ACTIVO;
         break;
       default:
         break;
