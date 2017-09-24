@@ -18,7 +18,7 @@ const properties: Routes = [
   { path: "home", component: HomePageComponent ,  canActivate: [AppGuard]},
   { path: "newruta", component: NewrutaComponent,  canActivate: [AppGuard] },
   { path: "requestruta", component: RequestRutaComponent,  canActivate: [AppGuard] },
-  { path: "started", component: StartPageComponent,  canActivate: [AppGuard] },
+  { path: "started/:id", component: StartPageComponent,  canActivate: [AppGuard] },
   { path: "viajeros-viaje/:id", component: ViajerosViajeComponent, canActivate: [AppGuard] }
   
 ];
