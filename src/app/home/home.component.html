@@ -13,9 +13,11 @@
         <md-panel-description>
         </md-panel-description>
       </md-expansion-panel-header>
-      <agm-map [latitude]="route.init.lat" [longitude]="route.init.long" [zoom]="12">
-        <agm-marker [latitude]="route.init.lat" [longitude]="route.init.long"></agm-marker>
-        <agm-marker [latitude]="route.end.lat" [longitude]="route.end.long"></agm-marker>
+
+      <div *ngIf="route.estado!==3">
+      <agm-map [latitude]="lat" [longitude]="lng">
+        <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+        <agm-marker [latitude]="lat2" [longitude]="lng2"></agm-marker>
       </agm-map>
       <div class="week">
         <ul>
@@ -31,6 +33,21 @@
         </div>
       <br>
       <button class="full-w" md-raised-button color="primary">Empezar ruta</button>
+    </div>
+    <div *ngIf="route.estado===3" style="flex-direction:column; display:flex;justify-content:space-between">
+      <div style="display:flex;justify-content:space-between">
+          <md-button-toggle ><md-icon>sentiment_very_dissatisfied</md-icon></md-button-toggle>
+        <md-button-toggle ><md-icon>sentiment_dissatisfied</md-icon></md-button-toggle>
+        <md-button-toggle><md-icon>sentiment_neutral</md-icon></md-button-toggle>
+        <md-button-toggle><md-icon>sentiment_satisfied</md-icon></md-button-toggle>
+        <md-button-toggle><md-icon>sentiment_very_satisfied</md-icon></md-button-toggle>
+      </div>
+        <br>
+        <md-form-field  style="width:100%" class="example-full-width">
+            <textarea  style="width:100%" mdInput placeholder="Comentarios"></textarea>
+          </md-form-field>
+        <button class="full-w" md-raised-button color="primary">Terminar ruta</button>
+    </div>
     </md-expansion-panel>
   </md-accordion>
 </div>
