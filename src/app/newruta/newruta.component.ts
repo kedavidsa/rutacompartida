@@ -102,7 +102,7 @@ export class NewrutaComponent implements OnInit {
   ruta: Ruta = {
     key: "",
     nombre: "",
-    estado: "ACTIVO",
+    estado: ACTIVO,
     init: {
       direccion: "",
       lat: "",
