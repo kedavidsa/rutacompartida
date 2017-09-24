@@ -21,10 +21,12 @@ body, app-root {
   justify-content: space-around;
   margin: 0px;
   font-family: roboto;
+  position: relative;
+  overflow-y: auto;
 }
 
 @media(max-width: 600px){
-  body{
+  body, app-root{
     width: 100%;
     height: 100%;
   }
