@@ -1,0 +1,24 @@
+<md-toolbar color="primary">
+  <span>Buscar ruta</span>
+</md-toolbar>
+<div>
+  <form action="" style="margin: 0.5em 1em; text-align:center;">
+      <md-form-field class="example-full-width" style="width:100%;">
+        <input mdInput placeholder="Destino" [(ngModel)]="destiny.name" (keyup)="drawDestinyAddress($event)" name="destiny">
+      </md-form-field>
+  </form>
+  <agm-map [latitude]="user.coords.latitude" [longitude]="user.coords.longitude" [zoom]="12">
+    <agm-marker [latitude]="user.coords.latitude" [longitude]="user.coords.longitude"></agm-marker>
+    <agm-marker [latitude]="destiny.lat" [longitude]="destiny.lng"></agm-marker>
+  </agm-map>
+  <div class="type" style="margin:1em;">
+      <ul>
+        <li *ngFor="let type of types" [ngClass]="{'active': type.active}" (click)="type.active = !type.active">
+          <md-icon>{{type.label}}</md-icon>
+        </li>
+      </ul>
+    </div>
+    <div style="margin:1em;">
+        <button md-raised-button color="primary" style="width: 100%;">Buscar afines</button>
+    </div>
+</div>

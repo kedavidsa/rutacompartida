@@ -6,13 +6,15 @@ import { LoginPageComponent } from "./login/login.component";
 import { HomePageComponent } from "./home/home.component";
 import { NewrutaComponent } from "./newruta/newruta.component";
 import { StartPageComponent } from "./startruta/start-ruta.component";
+import { RequestRutaComponent } from "./request-ruta/request-ruta.component";
 
 const properties: Routes = [
   { path: "", redirectTo: "/login", pathMatch: "full" },
   { path: "login", component: LoginPageComponent },
   { path: "home", component: HomePageComponent },
-  {   path: "newruta", component: NewrutaComponent },
-  {   path: "started", component: StartPageComponent },
+  { path: "newruta", component: NewrutaComponent },
+  { path: "requestruta", component: RequestRutaComponent },
+  { path: "started", component: StartPageComponent },
   
 ];
 
