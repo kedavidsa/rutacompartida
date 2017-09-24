@@ -10,7 +10,7 @@ import { LoginService } from "../login.service";
   styleUrls: ["./start-ruta.component.css"]
 })
 export class StartPageComponent {
-
+  
   @ViewChild('scrollMe') private myScrollContainer: ElementRef;
   title = "Started Route";
 
