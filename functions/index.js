@@ -175,8 +175,7 @@ exports.crearViaje = functions.database
                         console.log("Event pushId" + user);
                         var refRutas = db.ref("/usuarios/" + user);
                         refRutas
-                          .child("viajes")
-                          .child(ruta.key)
+                          .ref("/viajes/" + ruta.key )
                           .push({
                             date: "" + new Date().getTime(),
                             viajeKey: viajeKey
@@ -224,7 +223,6 @@ exports.newuser = functions.auth.user().onCreate(event => {
   const Url = user.photoURL;
   let ref = admin
     .database()
-    .child("/usuarios")
-    .child(user.uid)
+    .ref("/usuarios/" + user.uid)
     .set({ photo: Url });
 });
