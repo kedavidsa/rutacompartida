@@ -1,3 +1,4 @@
+
 const functions = require('firebase-functions');
 
 // // Create and Deploy Your First Cloud Functions
@@ -10,6 +11,11 @@ const functions = require('firebase-functions');
 // The Firebase Admin SDK to access the Firebase Realtime Database.
 const admin = require("firebase-admin");
 admin.initializeApp(functions.config().firebase);
+const googleMapsClient = require('@google/maps').createClient({
+    key: 'AIzaSyCb-zSaO_XizGF7fgnsBeLX5-MeRvVMagw'
+  });
+
+
 
 
 exports.crearViaje = functions.database
@@ -37,36 +43,57 @@ exports.crearViaje = functions.database
                     var ref = db.ref("/viajes");
 
                     // Attach an asynchronous callback to read the data at our viajes reference
-                    ref.on("value", function(snapshot) {
+                    /*ref.on("value", function(snapshot) {
                         console.log(snapshot.val());
-
-                        var keysViajes=Object.keys(snapshot.val());  
-                        console.log(keysViajes);
-                        var contador=keysViajes.length;
-                        var viajeCreado=false;
-                        keysViajes.forEach(function(keyViaje) {
+                        if(snapshot.val()!=null)
+                        {
                             
-                            var viaje=snapshot.val()[keyViaje];
-
-                            //Validate by range
-                            if(!viajeCreado&&distance(viaje.init.lat,viaje.init.long,ruta.init.lat,ruta.init.lat)<1&&distance(viaje.end.lat,viaje.end.long,ruta.end.lat,ruta.end.lat)<1){
-                                //Im a kilomether near to the viaje
-                                //Add me to the current viaje
-
-                                ref.child(viaje).child(viajeros).set(
-                                   {  userid: pushId ,
-                                      rutaid: ruta.key
-                                    });
+                            var keysViajes=Object.keys(snapshot.val());  
+                            console.log(keysViajes);
+                            
+                            var viajeCreado=false;
+                            //keysViajes.forEach(function(keyViaje) {
+                            for(var i=0;i<keysViajes.length;i++){
+                                var keyViaje=keysViajes[i];
+                                console.log("Key viaje"+keyViaje);
                                 
-
-                                contador--;
-                                viajeCreado=true;
+                                var ref2 = db.ref("/viajes/"+keyViaje);
+                                ref2.on("value", function(snapshot2) {
+                                    console.log(snapshot2 +"Viaje2");
+                                });
+                                
+                                var viaje=snapshot.val()[keyViaje];
+                                console.log(viaje);
+                                var distance1=distance(viaje.init.lat,viaje.init.long,ruta.init.lat,ruta.init.lat);
+                                var distance2=distance(viaje.end.lat,viaje.end.long,ruta.end.lat,ruta.end.lat);
+                                console.log(distance1+" d1");
+                                console.log(distance2+" d2");
+    
+                                //Validate by range
+                                if(!viajeCreado&&distance1<1&&distance2<1){
+                                    //Im a kilomether near to the viaje
+                                    //Add me to the current viaje
+                                    console.log("Hizo match con una ruta");
+    
+                                    ref.child(viaje).child(viajeros).set(
+                                       {  userid: pushId ,
+                                          rutaid: ruta.key
+                                        });
+                                    
+    
+                                    
+                                    viajeCreado=true;
+                                    
+                                }
+                                                    
+                                
+                                
+                                
                             }
-                            else{
-                                contador--;
-                            }
-                            if(contador==0&&!viajeCreado){
 
+                            if(!viajeCreado){
+                                
+                                console.log("No Hizo match, creatndo nuevo");
                                 //No matches, we have to create a new one
                                 ref.push({
                                     end: ruta.end,
@@ -86,14 +113,97 @@ exports.crearViaje = functions.database
                                     });
 
                             }
-                            
-                            
-                        });
+                        }
+                        else{
+
+                            console.log("No existen viajes, creatndo nuevo");
+                            //No matches, we have to create a new one
+                            ref.push({
+                                end: ruta.end,
+                                init: ruta.init,
+                                nombre: ruta.key,
+                                date: new Date(),
+                                types: ruta.types
+                            }).then(function (viajeRecord) {
+                                    // See the UserRecord reference doc for the contents of userRecord.
+                                    console.log("Successfully created new viaje:", viajeRecord.uid);
+                                    event.data.ref.update({
+                                        uid: userRecord.uid
+                                    });
+                                })
+                                .catch(function (error) {
+                                    console.log("Error creating new viaje:", error);
+                                });
+                        }
+
+                        
                         
 
 
                     }, function (errorObject) {
                         console.log("The read failed: " + errorObject.code);
+                    });*/
+
+                    ref
+                    .on("value", snap => {
+                        let viajes = snap.val();
+                        
+                        console.log(snap);
+                        var cont=0;
+                        if(viajes==null||viajes.lenght==0)
+                        {
+                            console.log("No existen viajes, creatndo nuevo");
+                            //No matches, we have to create a new one
+                            let viajeKey = ref.push().key
+                            ref.child(viajeKey).set(
+                            {
+                                key : viajeKey,
+                                end: ruta.end,
+                                init: ruta.init,
+                                nombre: ruta.key,
+                                date: new Date(),
+                                types: ruta.types,
+                                //viajeros:[{key:ruta.key}]
+                            }).then(function (viajeRecord) {
+                                    // See the UserRecord reference doc for the contents of userRecord.
+                                    console.log("Successfully created new viaje:", viajeRecord.uid);
+                                    event.data.ref.update({
+                                        uid: userRecord.uid
+                                    });
+                                })
+                                .catch(function (error) {
+                                    console.log("Error creating new viaje:", error);
+                                });
+
+                        }else{
+                            snap.forEach(via => {
+                                let viaje = via.val();
+                                
+                                console.log(viaje);
+                                var distance1=distance(viaje.init.lat,viaje.init.long,ruta.init.lat,ruta.init.long);
+                                var distance2=distance(viaje.end.lat,viaje.end.long,ruta.end.lat,ruta.end.long);
+                                console.log(distance1+" d1");
+                                console.log(distance2+" d2");
+    
+                                //Validate by range
+                                if(distance1<1&&distance2<1){
+                                    //Im a kilomether near to the viaje
+                                    //Add me to the current viaje
+                                    console.log("Hizo match con una ruta");
+    
+                                    ref.child(viaje.key).child('viajeros').push(ruta.key);
+                                    
+    
+                                    
+                                    //viajeCreado=true;
+                                    
+                                }
+                                
+                                
+                            });
+
+                        }
+                        
                     });
 
 
