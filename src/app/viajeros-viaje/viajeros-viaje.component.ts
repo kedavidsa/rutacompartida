@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AngularFireDatabase, FirebaseListObservable } from "angularfire2/database";
+import { LoginService } from "../login.service";
 
 @Component({
   selector: 'app-viajeros-viaje',
@@ -11,10 +12,20 @@ export class ViajerosViajeComponent implements OnInit {
   people: FirebaseListObservable<any>;
   peopleArr = [];
   viajeId;
+  username: string;
+  userpic: string;
   constructor(
     route: ActivatedRoute, 
     private router: Router,
-    private db: AngularFireDatabase) { 
+    private db: AngularFireDatabase,
+    private authService: LoginService,
+  ) { 
+    this.authService.user.subscribe(user => {
+      if(user){
+        this.username = user.displayName;
+        this.userpic = user.photoURL;
+      }
+    });
     this.viajeId = route.snapshot.paramMap.get('id');
     // Obtener el listado de viajeros del viaje
     db.list("/viajes/" + this.viajeId + "/viajeros", { preserveSnapshot: true})
@@ -48,6 +59,10 @@ export class ViajerosViajeComponent implements OnInit {
 
   back(){
     this.router.navigate(["/home"]);
+  }
+
+  logout() {
+    this.authService.logout();
   }
   
 

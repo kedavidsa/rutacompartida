@@ -102,6 +102,9 @@ html, body, login-page{
   height: 100%;
 }
 
-/*app-home, app-newruta{
- width: 100%;
-}*/
+.avatar{
+  width: 43px !important;
+  height: 43px !important;
+  margin-right: 0.5em;
+  border-radius: 50%
+}

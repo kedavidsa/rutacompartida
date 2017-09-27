@@ -1,8 +1,9 @@
 <md-toolbar color="primary">
+  <img class="avatar" [src]="userpic" (click)="logout()">
   <span>Tus rutas</span>
 </md-toolbar>
 <div>
-  <div style="display:flex;flex-direction:column; align-items:center; justify-content:space-between; margin:20px 0px"><img class="avatar" [src]="userpic" width="60" height="60">
+  <div style="display:flex;flex-direction:column; align-items:center; justify-content:space-between; margin:20px 0px">
     <h3 style="margin:20px; font-family:Roboto">Bienvenido {{username}}</h3>
   </div>
   <md-accordion multi="false">
@@ -43,44 +44,43 @@
           <h3>Grupos para tu viaje</h3>
           <span *ngIf="!returnViajes(route.viajes)"><md-spinner style="margin-left:15px"></md-spinner>Aun no hay grupos de viaje para esta ruta</span>
           <div style="display:flex;justify-content:space-between; flex-direction:column">
-          <button *ngFor="let trip of returnViajes(route.viajes)"
-          (click)="travelers(trip.viajeKey)" md-raised-button color="primary">{{trip.viajeros}}<md-icon style="margin-left:15px">person_pin</md-icon></button>
-          <br>
+            <button *ngFor="let trip of returnViajes(route.viajes)" (click)="travelers(trip.viajeKey)" md-raised-button color="primary">{{trip.viajeros}}<md-icon style="margin-left:15px">person_pin</md-icon></button>
+            <br>
           </div>
           <button *ngIf="returnViajes(route.viajes)" class="full-w" md-raised-button color="primary" (click)="editRoute(route)">EMPEZAR RUTA<md-icon style="margin-left:10px">nature_people</md-icon></button>
           <br>
           <button class="full-w" md-raised-button color="accent" (click)="endSearch(route)">PARAR BUSQUEDA<md-icon style="margin-left:10px">pan_tool</md-icon></button>
         </div>
       </div>
-        <div *ngIf="route.estado===3" style="flex-direction:column; display:flex;justify-content:space-between; align-items:center">
-          <div style="display:flex;justify-content:space-between">
-            <md-button-toggle-group #group="mdButtonToggleGroup">
-              <md-button-toggle color="primary">
-                <md-icon>sentiment_very_dissatisfied</md-icon>
-              </md-button-toggle>
-              <md-button-toggle>
-                <md-icon>sentiment_dissatisfied</md-icon>
-              </md-button-toggle>
-              <md-button-toggle>
-                <md-icon>sentiment_neutral</md-icon>
-              </md-button-toggle>
-              <md-button-toggle>
-                <md-icon>sentiment_satisfied</md-icon>
-              </md-button-toggle>
-              <md-button-toggle>
-                <md-icon>sentiment_very_satisfied</md-icon>
-              </md-button-toggle>
-            </md-button-toggle-group>
-          </div>
-          <br>
-          <md-form-field style="width:100%" class="example-full-width">
-            <textarea style="width:100%" mdInput placeholder="Comentarios"></textarea>
-          </md-form-field>
-          <button class="full-w" md-raised-button color="primary" (click)="editRoute(route)">EN MI DESTINO <md-icon style="margin-left:10px">sentiment_very_satisfied</md-icon></button>
+      <div *ngIf="route.estado===3" style="flex-direction:column; display:flex;justify-content:space-between; align-items:center">
+        <div style="display:flex;justify-content:space-between">
+          <md-button-toggle-group #group="mdButtonToggleGroup">
+            <md-button-toggle color="primary">
+              <md-icon>sentiment_very_dissatisfied</md-icon>
+            </md-button-toggle>
+            <md-button-toggle>
+              <md-icon>sentiment_dissatisfied</md-icon>
+            </md-button-toggle>
+            <md-button-toggle>
+              <md-icon>sentiment_neutral</md-icon>
+            </md-button-toggle>
+            <md-button-toggle>
+              <md-icon>sentiment_satisfied</md-icon>
+            </md-button-toggle>
+            <md-button-toggle>
+              <md-icon>sentiment_very_satisfied</md-icon>
+            </md-button-toggle>
+          </md-button-toggle-group>
         </div>
+        <br>
+        <md-form-field style="width:100%" class="example-full-width">
+          <textarea style="width:100%" mdInput placeholder="Comentarios"></textarea>
+        </md-form-field>
+        <button class="full-w" md-raised-button color="primary" (click)="editRoute(route)">EN MI DESTINO <md-icon style="margin-left:10px">sentiment_very_satisfied</md-icon></button>
+      </div>
     </md-expansion-panel>
   </md-accordion>
-  </div>
-  <button md-fab class="corner-buttons">
+</div>
+<button md-fab class="corner-buttons">
         <md-icon class="md-24" (click)="add()">add</md-icon>
 </button>

@@ -83,8 +83,10 @@ export class HomePageComponent {
     public rutaServ: RutasService
   ) {
     this.authService.user.subscribe(user => {
-      this.username = user.displayName;
-      this.userpic = user.photoURL;
+      if(user){
+        this.username = user.displayName;
+        this.userpic = user.photoURL;
+      }
     });
   }
   getReverseGeocoding(address) {
@@ -139,5 +141,9 @@ export class HomePageComponent {
     if(viajes){
       return arr;
     }
+  }
+
+  logout() {
+    this.authService.logout();
   }
 }

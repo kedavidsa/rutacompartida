@@ -14,6 +14,7 @@ import { Http } from "@angular/http";
 import { ViewContainerRef } from "@angular/core";
 import _ from "lodash";
 import { ToastsManager } from "ng2-toastr/ng2-toastr";
+import { LoginService } from "../login.service";
 
 @Component({
   selector: "app-newruta",
@@ -129,6 +130,8 @@ export class NewrutaComponent implements OnInit {
     }
   };
   @ViewChild("search") public searchElementRef: ElementRef;
+  username: string;
+  userpic: string;
   constructor(
     private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone,
@@ -136,9 +139,20 @@ export class NewrutaComponent implements OnInit {
     private rutaServ: RutasService,
     public http: Http,
     public toastr: ToastsManager,
-    public viewContainerRef: ViewContainerRef
+    public viewContainerRef: ViewContainerRef,
+    private authService: LoginService,
   ) {
+    this.authService.user.subscribe(user => {
+      if(user){
+        this.username = user.displayName;
+        this.userpic = user.photoURL;
+      }
+    });
     this.toastr.setRootViewContainerRef(viewContainerRef);
+    this.authService.user.subscribe(user => {
+      this.username = user.displayName;
+      this.userpic = user.photoURL;
+    });
   }
 
   ngOnInit() {}
@@ -238,9 +252,10 @@ export class NewrutaComponent implements OnInit {
 
   geocodeArcgis(address:string){
     var startUrl=`${address}`;
-    
-
   }
 
+  logout() {
+    this.authService.logout();
+  }
  
 }
