@@ -2,10 +2,6 @@ md-card{
     height: calc(100% - 56px);
 }
 
-.mat-form-field {
-    margin-bottom: 0.6em;
-}
-
 md-card-actions{
     padding: 0.6em;
     text-align: right;
