@@ -1,0 +1,366 @@
+/* Normal desktop :992px. */
+@media (min-width: 992px) and (max-width: 1169px) {
+.slicknav_menu {
+	display:block;
+}
+a.btn.btn-default {
+	margin-bottom: 20px;
+}
+.content-left h1 {
+	font-size: 35px;
+}
+.main-menu ul li {
+	display: inline-block;
+	float: left;
+	margin: 0 6px;
+}
+.pt-50 {
+	padding-top: 15px;
+}
+.subscribe-form button {
+	right: 188px;
+}
+.content-right {
+	text-align: right;
+	padding-top: 42px;
+}
+.slider-area {
+  padding-top: 53px;
+}
+}
+
+ 
+/* Tablet desktop :768px. */
+@media (min-width: 768px) and (max-width: 991px) {
+.header-area {
+	padding: 0;
+	background:#4C4C4C;
+	border-bottom: none;
+	z-index: 9999;
+}
+.sticky {
+	background: #4C4C4C none repeat scroll 0 0;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 111;
+}
+.header-area.sticky {
+  background: #4c4c4c none repeat scroll 0 0;
+}
+.slicknav_nav ul {
+	margin: 0;
+}
+
+.slicknav_nav a {
+	text-decoration: none;
+	color: #fff;
+	text-transform: uppercase;
+	padding-left: 5px;
+}
+.slicknav_nav a:hover {
+	background: none;
+	color:#834598;
+}
+.slicknav_menu {
+	display:block;
+}
+.section-title p {
+  color: #555655;
+  padding:0;
+}
+.slicknav_btn {
+  background-color: transparent;
+}
+
+.pt-30{
+	padding-top:30px;
+}
+.subscribe-form button {
+  right: 144px;
+}
+.slicknav_menu .slicknav_menutxt {
+  display: none;
+}
+.logo {
+  bottom: -65px;
+  display: inline-block;
+  left: 30px;
+  position: absolute;
+  z-index: 999;
+}
+.search-box {
+  bottom: 0;
+  float: right;
+  position: absolute;
+  right: 80px;
+  top: 11px;
+  z-index: 999;
+}
+.logo {
+  bottom: -35px;
+  display: inline-block;
+  left: 30px;
+  position: absolute;
+  z-index: 999;
+}
+.content-left {
+  text-align: center;
+}
+.slider-area {
+  padding-top: 53px;
+}
+.cap-readmore {
+  display: none;
+}
+.cap-dec h1 {
+  font-size: 30px;
+  font-weight: 700;
+}
+.cap-title p {
+  font-size: 14px;
+}
+.cap-dec h2 {
+  font-size: 36px;
+}
+.middle-text.text-right {
+  text-align: center;
+}
+}
+
+/* small mobile :320px. */
+@media (max-width: 767px) {
+.header-area.sticky {
+  background: #4c4c4c none repeat scroll 0 0;
+}
+.container {width:300px}
+.header-area {
+  z-index: 99999;
+}
+.hero-section {
+  padding: 150px 20px;
+}
+ .slicknav_menu {
+	display:block;
+}
+.main-menu{
+	display:none;
+}
+.section-title p {
+  color: #555655;
+  padding:0;
+}
+.slicknav_menu .slicknav_menutxt {
+	display: none;
+}
+.responsive-menu {
+	position: relative;
+}
+ .logo {
+	/* display: inline-block; */
+	position: absolute;
+	z-index: 1;
+	padding-top: 15px;
+	padding-left: 5px;
+}
+.slicknav_btn {
+	background-color: transparent;
+}
+.header-area {
+	background: #4C4C4C none repeat scroll 0 0;
+	border-bottom:none;
+	padding: 0;
+}
+.slicknav_nav ul {
+	margin: 0;
+}
+.slicknav_nav a {
+	padding: 5px 0;
+	margin: 2px 0px;
+	text-transform: uppercase;
+}
+.content-left h2 {	
+	font-size: 24px;
+}
+.content-left h1 {
+	font-size: 24px;
+}
+a.btn.btn-default {
+	margin-bottom: 20px;
+}
+.download-links a {
+	width: 270px;
+	margin-bottom: 20px;
+}
+.section-title h2 {
+	font-size: 22px;
+}
+.single-price-box {
+	margin: 10px 0;
+}
+.our-video h3 {
+	font-size: 20px;
+}
+.subscribe-form {
+	text-align: left;
+}
+.subscribe-form button {
+	right: 0;
+	padding: 0 14px;
+}
+.social-icon ul li {
+	margin-bottom: 40px;
+}
+.single-widged {
+	padding-bottom: 20px;
+}
+.sinle-team {
+	margin: 15px 0;
+}
+.content-box {
+	text-align: center;
+}
+.mouk-up {
+	padding-top: 30px;
+}
+.slicknav_nav a:hover {
+	background:transparent;
+	color: #834598;
+}
+.single-feature {
+	margin-bottom: 30px;
+}
+.mb-0{
+	margin-bottom:0 !important;
+}
+.download-links.wow.fadeInUp {
+	text-align: center;
+}
+.download-links a {
+	display: inline-block;
+}
+.download-links a i {
+	padding-right: 0;
+	padding-left: 30px;
+}
+.slicknav_nav a:hover {
+  background: transparent none repeat scroll 0 0;
+  color: #834598;
+}
+.slider-area {
+  padding-top: 53px;
+}
+.cap-readmore {
+  display: none;
+}
+
+}
+
+/* Large Mobile :480px. */
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+.container {width:450px}
+.header-area.sticky {
+  background: #4c4c4c none repeat scroll 0 0;
+}
+ .slicknav_menu {
+	display:block;
+}
+.main-menu{
+	display:none;
+}
+.section-title p {
+  color: #555655;
+  padding:0;
+}
+.slicknav_menu .slicknav_menutxt {
+	display: none;
+}
+.slicknav_btn {
+	background-color: none; 
+}
+.responsive-menu {
+	position: relative;
+}
+.logo {
+	/* display: inline-block; */
+	position: absolute;
+	z-index: 1;
+	padding-top: 15px;
+	padding-left: 5px;
+}
+.header-area {
+	background: #4C4C4C none repeat scroll 0 0;
+	border-bottom:none;
+	padding: 0;
+	z-index:9999;
+}
+.slicknav_nav ul {
+	margin: 0;
+}
+.slicknav_nav a {
+	padding: 5px 0;
+	margin: 2px 0px;
+	text-transform: uppercase;
+}
+.slicknav_nav a:hover {
+	background: transparent;
+	color: #834598;
+}
+.content-left h2 {	
+	font-size: 24px;
+}
+.content-left h1 {
+	font-size: 24px;
+}
+a.btn.btn-default {
+	margin-bottom: 20px;
+}
+.download-links a {
+	width: 270px;
+	margin-bottom: 20px;
+}
+.section-title h2 {
+	font-size: 22px;
+}
+.single-price-box {
+	margin: 10px 0;
+}
+.our-video h3 {
+	font-size: 20px;
+}
+.subscribe-form {
+	text-align: left;
+}
+.subscribe-form button {
+	right: 0;
+	padding: 0 14px;
+}
+.social-icon ul li {
+	margin-bottom: 40px;
+}
+
+.subscribe-form input {
+	width: 100%;
+}
+.single-widged {
+	padding-bottom: 20px;
+}
+.sinle-team {
+	margin: 15px 0;
+}
+.content-box {
+	text-align: center;
+}
+.mouk-up {
+	padding-top: 30px;
+}
+
+.slicknav_nav a:hover {
+	background:transparent;
+	color: #834598;
+}
+.slider-area {
+  padding-top: 53px;
+}
+}
+ 
