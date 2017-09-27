@@ -167,15 +167,51 @@ export class NewrutaComponent implements OnInit {
   save() {
     const self = this;
     self.savingRoute = true;
+
+    const gapiUrl = "http://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/findAddressCandidates?f=json&maxLocations=1&";
+    let startUrl = `${gapiUrl}&Address=${this.start}`;
+    let endUrl = `${gapiUrl}&Address=${this.end}`;
+
+    self.http.request(startUrl).subscribe(function(startResponse) {
+      
+      const parsedStartResponse = JSON.parse(startResponse.text());
+      if(parsedStartResponse.candidates!=null&&parsedStartResponse.candidates[0]&&parsedStartResponse.candidates[0].score==100){
+        let startCandidate=parsedStartResponse.candidates[0];
+        self.startCoordinates={lat:startCandidate.location.y,lng:startCandidate.location.x}
+        
+        
+        self.http.request(endUrl).subscribe(function(endResponse) {
+          const parsedEndResponse = JSON.parse(endResponse.text());
+          if(parsedEndResponse.candidates!=null&&parsedEndResponse.candidates[0]&&parsedEndResponse.candidates[0].score==100){
+            let endCandidate=parsedEndResponse.candidates[0];
+            self.endCoordinates={lat:endCandidate.location.y,lng:endCandidate.location.x}
+            self.saveAddressOnFirebase();
+    
+          }
+          else{
+            self.toastr.error("Corrige las direcciones!", "Error");
+          }
+          
+    
+        });
+
+
+
+      }
+      else{
+        self.toastr.error("Corrige las direcciones!", "Error");
+      }
+      
+
+    });
+
     // Get start and end coordinates
-    const gapiUrl = "https://maps.googleapis.com/maps/api/geocode/json?";
+    /*const gapiUrl = "https://maps.googleapis.com/maps/api/geocode/json?";
     let startUrl = `${gapiUrl}address=${this
       .start}&key=AIzaSyCLHVsmTkK8mWKnfYJUEQmkUFsy_KI1kIs`;
     let endUrl = `${gapiUrl}address=${this
       .end}&key=AIzaSyCLHVsmTkK8mWKnfYJUEQmkUFsy_KI1kIs`;
-    /*this.http.request(startUrl).subscribe(function(response){
-      this.startCoordinates = response.text());
-    });*/
+    
 
     self.http.request(startUrl).subscribe(function(startResponse) {
       const parsedStartResponse = JSON.parse(startResponse.text()).results[0];
@@ -197,7 +233,13 @@ export class NewrutaComponent implements OnInit {
           self.toastr.error("Corrige las direcciones!", "Error");
         }
       });
-    });
+    });*/
+  }
+
+  geocodeArcgis(address:string){
+    var startUrl=`${address}`;
+    
+
   }
 
  
