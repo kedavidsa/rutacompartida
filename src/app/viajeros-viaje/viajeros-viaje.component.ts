@@ -24,7 +24,7 @@ export class ViajerosViajeComponent implements OnInit {
         .subscribe(user=>{
           console.log(user);
           let isInArr = false;
-          for(var i in this.peopleArr){
+          for(let i in this.peopleArr){
             if(user.nombre == this.peopleArr[i].nombre){
               isInArr = true;
             }
