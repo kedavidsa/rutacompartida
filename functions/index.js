@@ -39,8 +39,9 @@ exports.crearViaje = functions.database
             var db = admin.database();
             var ref = db.ref("/viajes");
 
-            ref.on("value", snap => {
-              let viajes = snap.val();
+            //ref.on("value", snap => {
+            ref.once("value").then(function(snap)  {
+            let viajes = snap.val();
 
               console.log(snap);
               var cont = 0;
@@ -73,19 +74,21 @@ exports.crearViaje = functions.database
                     viaje.init.lat,
                     viaje.init.long,
                     ruta.init.lat,
-                    ruta.init.long
+                    ruta.init.long,
+                    "K"
                   );
                   var distance2 = distance(
                     viaje.end.lat,
                     viaje.end.long,
                     ruta.end.lat,
-                    ruta.end.long
+                    ruta.end.long,
+                    "K"
                   );
                   console.log(distance1 + " d1");
                   console.log(distance2 + " d2");
 
                   //Validate by range
-                  if (!viajeCreado && distance1 < 1 && distance2 < 1) {
+                  if (!viajeCreado && distance1 < 2 && distance2 < 2) {
                     //Im a kilomether near to the viaje
                     //Add me to the current viaje
                     console.log("Hizo match con una ruta");
@@ -108,8 +111,8 @@ exports.crearViaje = functions.database
                   itemsProcessed++;
 
                   console.log("Items" + itemsProcessed);
-                  console.log("Num of children" + viajes.length);
-                  if (!viajeCreado && itemsProcessed === viajes.length) {
+                  console.log("Num of children" + snap.numChildren());
+                  if (!viajeCreado && itemsProcessed === snap.numChildren()) {
                     console.log("No matches viajes, creatndo nuevo");
                     //No matches, we have to create a new one
                     let viajeKey = ref.push().key;
@@ -150,21 +153,18 @@ exports.crearViaje = functions.database
     });
   });
 
-function distance(lat1, lon1, lat2, lon2) {
-  var R = 6371; // km (change this constant to get miles)
-  var dLat = (lat2 - lat1) * Math.PI / 180;
-  var dLon = (lon2 - lon1) * Math.PI / 180;
-  var a =
-    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-    Math.cos(lat1 * Math.PI / 180) *
-      Math.cos(lat2 * Math.PI / 180) *
-      Math.sin(dLon / 2) *
-      Math.sin(dLon / 2);
-  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-  var d = R * c;
-  if (d > 1) return Math.round(d);
-  else if (d <= 1) return Math.round(d * 1000);
-  return d;
+function distance(lat1, lon1, lat2, lon2, unit) {
+    var radlat1 = Math.PI * lat1/180
+    var radlat2 = Math.PI * lat2/180
+    var theta = lon1-lon2
+    var radtheta = Math.PI * theta/180
+    var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+    dist = Math.acos(dist)
+    dist = dist * 180/Math.PI
+    dist = dist * 60 * 1.1515
+    if (unit=="K") { dist = dist * 1.609344 }
+    if (unit=="N") { dist = dist * 0.8684 }
+    return dist
 }
 
 exports.newuser = functions.auth.user().onCreate(event => {
