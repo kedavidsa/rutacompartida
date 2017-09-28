@@ -3,7 +3,6 @@
   <span>Nueva ruta</span>
 </md-toolbar>
 <md-card>
-  <md-progress-bar *ngIf="savingRoute" mode="indeterminate"></md-progress-bar>
   <md-card-content>
     <form class="form" #createAddressForm="ngForm">
       <md-form-field style="width:100%">
@@ -13,15 +12,25 @@
         </md-error>
       </md-form-field>
       <md-form-field style="width:100%">
-        <input [(ngModel)]="ruta.init.direccion" mdInput placeholder="Dirección de Inicio" [formControl]="diriniFormControl" name="start"
-          [(ngModel)]="start">
+        <input [mdAutocomplete]="ini" [(ngModel)]="ruta.init.direccion" mdInput placeholder="Dirección de Inicio" [formControl]="diriniFormControl"
+          name="start" [(ngModel)]="start">
+        <md-autocomplete #ini="mdAutocomplete">
+          <md-option *ngFor="let suggestion of suggestions" [value]="suggestion.text">
+            <small>{{ suggestion.text }}</small>
+          </md-option>
+        </md-autocomplete>
         <md-error *ngIf="diriniFormControl.hasError('required')">
           Dirección de inicio es <strong>obligatorio</strong>
         </md-error>
       </md-form-field>
       <md-form-field style="width:100%">
-        <input [(ngModel)]="ruta.end.direccion" mdInput placeholder="Dirección de Destino" [formControl]="dirdestFormControl" name="end"
-          [(ngModel)]="end">
+        <input [mdAutocomplete]="endi" [(ngModel)]="ruta.end.direccion" mdInput placeholder="Dirección de Destino" [formControl]="dirdestFormControl"
+          name="end" [(ngModel)]="end">
+        <md-autocomplete #endi="mdAutocomplete">
+          <md-option *ngFor="let suggestion of suggestions" [value]="suggestion.text">
+            <small>{{ suggestion.text }}</small>
+          </md-option>
+        </md-autocomplete>
         <md-error *ngIf="dirdestFormControl.hasError('required')">
           Dirección de destino es <strong>obligatorio</strong>
         </md-error>
@@ -45,7 +54,7 @@
   <hr>
   <md-card-actions>
     <button md-raised-button md-button (click)="back()">ATRÁS</button>
-    <button md-raised-button color="primary" (click)="save()">GUARDAR RUTA</button>
+    <button md-raised-button [disabled]="!buttonState()" color="primary" (click)="save()">GUARDAR RUTA</button>
   </md-card-actions>
   <md-progress-bar *ngIf="savingRoute" mode="indeterminate"></md-progress-bar>
 </md-card>
