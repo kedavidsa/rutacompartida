@@ -171,6 +171,7 @@ exports.newuser = functions.auth.user().onCreate(event => {
   const user = event.data; // The Firebase user.
   const Url = user.photoURL;
   const name = user.displayName;
+  console.log("####################" + name);
   let ref = admin
     .database()
     .ref("/usuarios/" + user.uid)
