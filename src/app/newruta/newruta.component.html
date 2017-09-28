@@ -1,14 +1,10 @@
 <md-toolbar color="primary">
-  <span>Tus rutas</span>
+  <img class="avatar" [src]="userpic" (click)="logout()">
+  <span>Nueva ruta</span>
 </md-toolbar>
-<div class="main">
-    <md-toolbar color="primary">
-      <span>Nueva ruta</span>
-    </md-toolbar>
-    <md-progress-bar *ngIf="savingRoute" mode="indeterminate"></md-progress-bar>
-
-  <form class="form" #createAddressForm="ngForm">
-    <md-card>
+<md-card>
+  <md-card-content>
+    <form class="form" #createAddressForm="ngForm">
       <md-form-field style="width:100%">
         <input [(ngModel)]="ruta.nombre" mdInput placeholder="Nombre Ruta" [formControl]="rutaFormControl" name="name" [(ngModel)]="name">
         <md-error *ngIf="rutaFormControl.hasError('required')">
@@ -16,26 +12,36 @@
         </md-error>
       </md-form-field>
       <md-form-field style="width:100%">
-        <input [(ngModel)]="ruta.init.direccion" mdInput placeholder="Dirección de Inicio" [formControl]="diriniFormControl" name="start" [(ngModel)]="start">
+        <input [mdAutocomplete]="ini" [(ngModel)]="ruta.init.direccion" mdInput placeholder="Dirección de Inicio" [formControl]="diriniFormControl"
+          name="start" [(ngModel)]="start">
+        <md-autocomplete #ini="mdAutocomplete">
+          <md-option *ngFor="let suggestion of suggestions" [value]="suggestion.text">
+            <small>{{ suggestion.text }}</small>
+          </md-option>
+        </md-autocomplete>
         <md-error *ngIf="diriniFormControl.hasError('required')">
           Dirección de inicio es <strong>obligatorio</strong>
         </md-error>
       </md-form-field>
       <md-form-field style="width:100%">
-        <input [(ngModel)]="ruta.end.direccion" mdInput placeholder="Dirección de Destino" [formControl]="dirdestFormControl" name="end" [(ngModel)]="end">
+        <input [mdAutocomplete]="endi" [(ngModel)]="ruta.end.direccion" mdInput placeholder="Dirección de Destino" [formControl]="dirdestFormControl"
+          name="end" [(ngModel)]="end">
+        <md-autocomplete #endi="mdAutocomplete">
+          <md-option *ngFor="let suggestion of suggestions" [value]="suggestion.text">
+            <small>{{ suggestion.text }}</small>
+          </md-option>
+        </md-autocomplete>
         <md-error *ngIf="dirdestFormControl.hasError('required')">
           Dirección de destino es <strong>obligatorio</strong>
         </md-error>
       </md-form-field>
-    </md-card>
-    <md-card>
+      <hr>
       <div class="week">
         <ul>
           <li *ngFor="let day of days" [ngClass]="{'active': day.active}" (click)="day.active = !day.active">{{day.label}}</li>
         </ul>
       </div>
-    </md-card>
-    <md-card>
+      <hr>
       <div class="type">
         <ul>
           <li *ngFor="let type of types" [ngClass]="{'active': type.active}" (click)="type.active = !type.active">
@@ -43,14 +49,12 @@
           </li>
         </ul>
       </div>
-
-    </md-card>
-    <md-card style="display:flex; justify-content:space-between">
-      <button md-raised-button color="primary" (click)="save()">GUARDAR RUTA</button>
-      <button md-raised-button color="accent" (click)="back()">ATRÁS</button>
-
-    </md-card>
-    <md-progress-bar *ngIf="savingRoute" mode="indeterminate"></md-progress-bar>
-
-  </form>
-</div>
+    </form>
+  </md-card-content>
+  <hr>
+  <md-card-actions>
+    <button md-raised-button md-button (click)="back()">ATRÁS</button>
+    <button md-raised-button [disabled]="!buttonState()" color="primary" (click)="save()">GUARDAR RUTA</button>
+  </md-card-actions>
+  <md-progress-bar *ngIf="savingRoute" mode="indeterminate"></md-progress-bar>
+</md-card>

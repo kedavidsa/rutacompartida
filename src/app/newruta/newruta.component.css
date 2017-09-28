@@ -1,0 +1,8 @@
+md-card{
+    height: calc(100% - 56px);
+}
+
+md-card-actions{
+    padding: 0.6em;
+    text-align: right;
+}
