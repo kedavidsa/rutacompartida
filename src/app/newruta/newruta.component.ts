@@ -206,7 +206,7 @@ export class NewrutaComponent implements OnInit {
 
   autocompleteAddresses(query: string) {
     const replaced = query.replace(' ', '+');
-    const apiUrl = `http://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/suggest?text=${query}&category=&location=&distance=&f=pjson&countryCode=CO`;
+    const apiUrl = `https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/suggest?text=${query}&category=&location=&distance=&f=pjson&countryCode=CO`;
     return new Promise(resolve =>{
       this.http.request(apiUrl)
       .subscribe(data => {
@@ -219,7 +219,7 @@ export class NewrutaComponent implements OnInit {
     const self = this;
     self.savingRoute = true;
 
-    const gapiUrl = "http://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/findAddressCandidates?f=json&maxLocations=1&";
+    const gapiUrl = "https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/findAddressCandidates?f=json&maxLocations=1&";
     let startUrl = `${gapiUrl}&Address=${this.start}`;
     let endUrl = `${gapiUrl}&Address=${this.end}`;
 
@@ -250,7 +250,7 @@ export class NewrutaComponent implements OnInit {
         self.savingRoute = false;
         self.toastr.error("Corrige las direcciones!", "Error");
       }
-      
+
     });
 
     // Get start and end coordinates
