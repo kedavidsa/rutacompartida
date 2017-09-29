@@ -97,7 +97,7 @@ body {
 	width: 100%;
 	height: 100%;
 	bottom: 0;
-	background:#834598 ;
+	background:#3F51B5 ;
 	z-index: 999999999999999;
 }
 
@@ -198,7 +198,7 @@ body {
 
 
 .header-area.sticky {
-  background: #834598 none repeat scroll 0 0;
+  background: #3F51B5 none repeat scroll 0 0;
   position: fixed;
   top: 0;
   width: 100%;
@@ -206,8 +206,8 @@ body {
 }
 
 .header-area {
-    background: #834598 none repeat scroll 0 0;
-    border-bottom: 2px solid #713b83;
+    background: #3F51B5 none repeat scroll 0 0;
+    border-bottom: 2px solid #374596;
     padding: 20px;
     position: absolute; 
     width: 100%;
@@ -292,7 +292,7 @@ body {
 /*================ Hero-section ==================== */
 
 .hero-section {
-  background: #834598 none repeat scroll 0 0;
+  background: #3F51B5 none repeat scroll 0 0;
   overflow: hidden;
   padding: 220px 20px 150px;
 }
@@ -339,11 +339,11 @@ a.btn.btn-default {
 
 a.btn.btn-default:hover {
     background: #fff;
-    color: #834598;
+    color: #3F51B5;
 }
 a.btn.btn-default:hover {
     background: #fff;
-    color: #834598;
+    color: #3F51B5;
 }
 /* ============slider-area ====== */
 .slider-area {
@@ -397,7 +397,7 @@ a.btn.btn-default:hover {
   text-transform: uppercase;
 }
 .cap-readmore a:hover {
-    background: #834598;
+    background: #3F51B5;
 }
 .nivo-directionNav a {
 	background: #393939 none repeat scroll 0 0;
@@ -416,7 +416,7 @@ a.btn.btn-default:hover {
 	z-index: 99;
 }
 .nivo-directionNav a:hover {
-  background: #834598 none repeat scroll 0 0;
+  background: #3F51B5 none repeat scroll 0 0;
   opacity: 1;
 }
 .nivo-directionNav a.nivo-nextNav {
@@ -431,7 +431,7 @@ a.btn.btn-default:hover {
 .features-section{
 }
 .section-title{
-	color:#834598;
+	color:#3F51B5;
 	padding-bottom: 80px;
 }
 .section-title h2{
@@ -470,13 +470,13 @@ a.btn.btn-default:hover {
   
 }
 .feature-icon:hover a::before,.feature-icon.active a::before{
-	background:#834598;
+	background:#3F51B5;
 }
 .single-feature:hover .feature-content h3{
-	color:#834598;
+	color:#3F51B5;
 }
 .single-feature h3.active {
-    color: #834598;
+    color: #3F51B5;
 }
 .feature-content h3 {
     padding-top: 20px;
@@ -505,7 +505,7 @@ a.btn.btn-default:hover {
   opacity: 1;
 }
 .slick-dots li.slick-active button::before {
-  color: #834598;
+  color: #3F51B5;
   opacity: 1;
 }
 .slick-dots {
@@ -530,10 +530,10 @@ a.btn.btn-default:hover {
     padding-bottom: 10px;
 }
 .content-box h3:hover{
-	color:#834598;
+	color:#3F51B5;
 }
 .download-section{
-	background:#834598;
+	background:#3F51B5;
 	padding-bottom:80px;
 	margin-top:130px;
 }
@@ -549,7 +549,7 @@ a.btn.btn-default:hover {
   background: #fff;;
   border: 1px solid #fff;
   border-radius: 10px;
-  color: #834598;;
+  color: #3F51B5;;
   display: block;
   height: 80px;
   width: 300px;
@@ -592,10 +592,10 @@ a.btn.btn-default:hover {
   text-transform: uppercase;
 }
 .team-content h4:hover{
-	color: #834598;
+	color: #3F51B5;
 }
 .team-content h4:hover,.team-content.active h4{
-	color: #834598;
+	color: #3F51B5;
 }
 .team-content  p {
   font-weight: 300;
@@ -623,13 +623,13 @@ a.btn.btn-default:hover {
   padding-top: 75px;
 }
 .single-price-box:hover .price::before,.single-price-box.active .price::before{
-	background:#834598;
+	background:#3F51B5;
 }
 .single-price-box:hover .price-content h3,.single-price-box.active h3{
-	color:#834598;
+	color:#3F51B5;
 }
 .single-price-box:hover .dl-btn ,.single-price-box.active .dl-btn {
-	background:#834598;
+	background:#3F51B5;
 }
 .price {
   color: #fff;
@@ -676,7 +676,7 @@ a.btn.btn-default:hover {
 /* subscribe-section */
 
 .subscribe-section{
-	background:url(/assets/landing/img/subscribe-bg.jpg);
+	background:url(/assets/landing/img/mapbbg.jpg);
 	background-position:center center;
 	background-size:cover;
 	/* repeat:no-repeat; */
@@ -700,7 +700,7 @@ a.btn.btn-default:hover {
   display: inline-block;
 }
 .subscribe-form button {
-	background: #834598 none repeat scroll 0 0;
+	background: #3F51B5 none repeat scroll 0 0;
 	border: medium none;
 	color: #fff;
 	font-weight: 700;
@@ -736,12 +736,12 @@ a.btn.btn-default:hover {
 	transform:rotate(-45deg)
 }
 .social-icon ul li a:hover{
-	background:#834598;
+	background:#3F51B5;
 }
 
 /* footer-widged */
 .footer-widged{
-	background:#834598;
+	background:#3F51B5;
 	padding:80px 0;
 }
 .single-widged{}
@@ -765,7 +765,7 @@ a.btn.btn-default:hover {
 
 /* copyright-section */
 .copyright-section{
-	background:#834598;
+	background:#3F51B5;
 }
 .social-icon-2 {
   padding-bottom: 20px;
